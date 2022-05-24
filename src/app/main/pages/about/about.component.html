@@ -1,0 +1,19 @@
+<div class="flexy column container center" [ngClass]="background">
+  <app-blobs [blobs]="blobs"></app-blobs>
+  <div class="ml flexy row gap">
+    <app-image [image]="'photo-2'"></app-image>
+
+    <div class="flexy column">
+      <section class="about">
+        <h1 class="is-48 is-white underline">
+          {{ "about.summary.header" | translate }}
+        </h1>
+        <p class="is-16 is-white">{{ "about.summary.paragraph" | translate }}</p>
+      </section>
+      <section class="skills">
+        <h1 class="is-48 is-white underline"> {{ 'about.skills.header' | translate}} </h1>
+        <app-skills></app-skills>
+      </section>
+    </div>
+  </div>
+</div>

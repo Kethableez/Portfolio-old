@@ -14,9 +14,12 @@ import { BlobComponent } from './main/components/blob/blob.component';
 import { BlobsComponent } from './main/components/blobs/blobs.component';
 import { ImageComponent } from './main/components/image/image.component';
 import { NavigationComponent } from './main/components/navigation/navigation.component';
+import { AboutComponent } from './main/pages/about/about.component';
+import { SkillsComponent } from './main/components/skills/skills.component';
+import { SkillComponent } from './main/components/skill/skill.component';
 
 @NgModule({
-  declarations: [AppComponent, LandingComponent, BlobComponent, BlobsComponent, ImageComponent, NavigationComponent],
+  declarations: [AppComponent, LandingComponent, BlobComponent, BlobsComponent, ImageComponent, NavigationComponent, AboutComponent, SkillsComponent, SkillComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,22 @@
+<div class="flexy row gap">
+  <div>
+    <p class="is-24 is-white">Web</p>
+    <ng-container *ngFor="let skill of web">
+      <app-skill [skill]="skill" [prefix]="'skill.web'"></app-skill>
+    </ng-container>
+  </div>
+
+  <div>
+    <p class="is-24 is-white">Języki programowania</p>
+    <ng-container *ngFor="let skill of programmingLanguages">
+      <app-skill [skill]="skill" [prefix]="'skill.plang'"></app-skill>
+    </ng-container>
+  </div>
+
+  <div>
+    <p class="is-24 is-white">Języki</p>
+    <ng-container *ngFor="let skill of languages">
+      <app-skill [skill]="skill" [prefix]="'skill.lang'"></app-skill>
+    </ng-container>
+  </div>
+</div>
