@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { PageType } from '../core/models/page-type.model';
 
 enum Language {
   PL = 'pl',
@@ -26,5 +27,9 @@ export class AppComponent {
 
   get Language() {
     return Language;
+  }
+
+  get PageType() {
+    return PageType;
   }
 }

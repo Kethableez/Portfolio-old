@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #496CA0;
+$gray: #454648;
+$black: #020202;
+$white: #FCF7F8;
+
+html, * {
+  margin: 0;
+  padding: 0;
+}
+
+.blob {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  fill: $primary;
+}
+
+.svg-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.up {
+  top: 0;
+}
+
+.down {
+  bottom: 0;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.bg-dark {
+  background: $black;
+}
+
+.bg-light {
+  background: $gray;
+}

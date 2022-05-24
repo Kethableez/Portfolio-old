@@ -9,16 +9,18 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { SkillListComponent } from './skills/skill-list/skill-list.component';
-import { SkillComponent } from './skills/skill/skill.component';
-import { SkillsComponent } from './skills/skills.component';
+import { PageDirective } from './main/components/page.directive';
+import { LandingComponent } from './main/pages/landing/landing.component';
+import { BlobComponent } from './main/components/blob/blob.component';
+import { AbstractPageComponent } from './main/pages/abstract-page/abstract-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SkillListComponent,
-    SkillComponent,
-    SkillsComponent
+    PageDirective,
+    LandingComponent,
+    BlobComponent,
+    AbstractPageComponent,
   ],
   imports: [
     BrowserModule,
