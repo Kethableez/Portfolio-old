@@ -1,9 +1,12 @@
-$primary: #496CA0;
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap");
+
+$primary: #496ca0;
 $gray: #454648;
 $black: #020202;
-$white: #FCF7F8;
+$white: #fcf7f8;
 
-html, * {
+html,
+* {
   margin: 0;
   padding: 0;
 }
@@ -13,9 +16,54 @@ html, * {
   width: fit-content;
   height: fit-content;
   fill: $primary;
+  z-index: -1;
 }
 
-.svg-container {
+.flexy {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+h1 {
+  font-family: "Lora", serif;
+}
+
+p {
+  font-family: "Martel Sans", sans-serif;
+}
+
+.is-12 {
+  font-size: 12px;
+}
+
+.is-16 {
+  font-size: 16px;
+}
+
+.is-24 {
+  font-size: 24px;
+}
+
+.is-32 {
+  font-size: 32px;
+}
+
+.is-48 {
+  font-size: 48px;
+}
+
+.is-64 {
+  font-size: 64px;
+}
+
+.container {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -38,9 +86,16 @@ html, * {
 }
 
 .bg-dark {
+  z-index: -2;
   background: $black;
 }
 
 .bg-light {
   background: $gray;
+}
+
+app-navigation {
+  position: absolute;
+  top: 1rem;
+  right: 5rem;
 }

@@ -8,20 +8,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { PageDirective } from './main/components/page.directive';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LandingComponent } from './main/pages/landing/landing.component';
 import { BlobComponent } from './main/components/blob/blob.component';
-import { AbstractPageComponent } from './main/pages/abstract-page/abstract-page.component';
+import { BlobsComponent } from './main/components/blobs/blobs.component';
+import { ImageComponent } from './main/components/image/image.component';
+import { NavigationComponent } from './main/components/navigation/navigation.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageDirective,
-    LandingComponent,
-    BlobComponent,
-    AbstractPageComponent,
-  ],
+  declarations: [AppComponent, LandingComponent, BlobComponent, BlobsComponent, ImageComponent, NavigationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,17 +26,18 @@ import { AbstractPageComponent } from './main/pages/abstract-page/abstract-page.
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
     StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
-}1
+}
+1;
