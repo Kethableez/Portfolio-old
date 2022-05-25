@@ -1,18 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { PageType } from '../core/models/page-type.model';
 
 enum Language {
   PL = 'pl',
-  EN = 'en'
+  EN = 'en',
 }
 
 @Component({
-  selector: 'app-root',
+  selector: 'ktbz-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @HostListener('window:scroll', ['$event']) onWindowScroll(e: any) {
+    console.log(e);
+
+    // Your Code Here
+  }
 
   constructor(private translate: TranslateService) {
     translate.setDefaultLang(Language.PL);

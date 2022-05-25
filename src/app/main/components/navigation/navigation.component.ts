@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageType } from 'src/app/core/models/page-type.model';
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'ktbz-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })

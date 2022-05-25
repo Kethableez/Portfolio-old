@@ -17,9 +17,27 @@ import { NavigationComponent } from './main/components/navigation/navigation.com
 import { AboutComponent } from './main/pages/about/about.component';
 import { SkillsComponent } from './main/components/skills/skills.component';
 import { SkillComponent } from './main/components/skill/skill.component';
+import { EducationComponent } from './main/pages/education/education.component';
+import { ExperienceComponent } from './main/pages/experience/experience.component';
+import { ProjectsComponent } from './main/pages/projects/projects.component';
+import { ContactComponent } from './main/pages/contact/contact.component';
 
 @NgModule({
-  declarations: [AppComponent, LandingComponent, BlobComponent, BlobsComponent, ImageComponent, NavigationComponent, AboutComponent, SkillsComponent, SkillComponent],
+  declarations: [
+    AppComponent,
+    LandingComponent,
+    BlobComponent,
+    BlobsComponent,
+    ImageComponent,
+    NavigationComponent,
+    AboutComponent,
+    SkillsComponent,
+    SkillComponent,
+    EducationComponent,
+    ExperienceComponent,
+    ProjectsComponent,
+    ContactComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

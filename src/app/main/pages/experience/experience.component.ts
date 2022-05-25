@@ -3,12 +3,12 @@ import { PageType } from 'src/app/core/models/page-type.model';
 import { PageDirective } from '../../components/page.directive';
 
 @Component({
-  selector: 'ktbz-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
+  selector: 'ktbz-experience',
+  templateUrl: './experience.component.html',
+  styleUrls: ['./experience.component.scss'],
 })
-export class LandingComponent extends PageDirective implements OnInit {
-  pageType: PageType = PageType.LANDING;
+export class ExperienceComponent extends PageDirective implements OnInit {
+  pageType: PageType = PageType.EXPERIENCE;
 
   constructor() {
     super();

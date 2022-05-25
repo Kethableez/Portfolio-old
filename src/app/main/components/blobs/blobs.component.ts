@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-blobs',
+  selector: 'ktbz-blobs',
   templateUrl: './blobs.component.html',
   styleUrls: ['./blobs.component.scss'],
 })

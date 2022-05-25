@@ -1,8 +1,10 @@
-<!-- <app-navigation></app-navigation> -->
+<!-- <ktbz-navigation></ktbz-navigation> -->
 
-
-  <div class="scroll">
-    <app-landing></app-landing>
-    <app-about></app-about>
-  </div>
-
+<div class="scroll" (scroll)="onWindowScroll($event)">
+  <ktbz-landing></ktbz-landing>
+  <ktbz-about></ktbz-about>
+  <ktbz-education></ktbz-education>
+  <ktbz-experience></ktbz-experience>
+  <ktbz-projects></ktbz-projects>
+  <ktbz-contact></ktbz-contact>
+</div>

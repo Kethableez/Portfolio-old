@@ -3,18 +3,18 @@ import { PageType } from 'src/app/core/models/page-type.model';
 import { PageDirective } from '../../components/page.directive';
 
 @Component({
-  selector: 'ktbz-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
+  selector: 'ktbz-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.scss'],
 })
-export class LandingComponent extends PageDirective implements OnInit {
-  pageType: PageType = PageType.LANDING;
+export class ContactComponent extends PageDirective implements OnInit {
+  pageType: PageType = PageType.CONTACT;
 
   constructor() {
     super();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initPage(this.pageType);
   }
 }

@@ -1,13 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-blob',
+  selector: 'ktbz-blob',
   templateUrl: './blob.component.html',
-  styleUrls: ['./blob.component.scss']
+  styleUrls: ['./blob.component.scss'],
 })
 export class BlobComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   @Input() icon!: string;
   @Input() width?: number;
@@ -15,8 +14,5 @@ export class BlobComponent implements OnInit {
   @Input() fill?: string;
   @Input() class?: string;
 
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 }

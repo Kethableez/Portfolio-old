@@ -3,7 +3,7 @@ import { PageType } from 'src/app/core/models/page-type.model';
 import { PageDirective } from '../../components/page.directive';
 
 @Component({
-  selector: 'app-about',
+  selector: 'ktbz-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })
