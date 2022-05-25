@@ -1,5 +1,8 @@
 <div class="flexy row gap" *ngIf="skill">
   <p class="is-16 is-white"> {{ label  | translate}}</p>
 
-  <progress [value]="skill.level" [max]="'10'"></progress>
+  <div class="progress">
+    <div class="progress-bar" [ngStyle]="{'width': width}"></div>
+    <div class="progress-bg"></div>
+  </div>
 </div>

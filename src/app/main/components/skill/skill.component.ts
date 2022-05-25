@@ -17,4 +17,8 @@ export class SkillComponent implements OnInit {
   get label() {
     return `${this.prefix}.${this.skill.name}`;
   }
+
+  get width() {
+    return `${this.skill.level * 10}%`;
+  }
 }

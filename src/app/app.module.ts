@@ -21,6 +21,7 @@ import { EducationComponent } from './main/pages/education/education.component';
 import { ExperienceComponent } from './main/pages/experience/experience.component';
 import { ProjectsComponent } from './main/pages/projects/projects.component';
 import { ContactComponent } from './main/pages/contact/contact.component';
+import { EduBoxComponent } from './main/components/edu-box/edu-box.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ContactComponent } from './main/pages/contact/contact.component';
     ExperienceComponent,
     ProjectsComponent,
     ContactComponent,
+    EduBoxComponent,
   ],
   imports: [
     BrowserModule,
