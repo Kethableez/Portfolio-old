@@ -61,6 +61,6 @@ import { EduBoxComponent } from './main/components/edu-box/edu-box.component';
 export class AppModule {}
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/');
 }
 1;
