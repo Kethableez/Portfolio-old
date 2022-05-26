@@ -1,12 +1,33 @@
 <div class="flexy column container center">
   <div [ngClass]="background"></div>
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
-  <div class="positioned">
+
+
+  <div class="content flexy column gap stretch">
     <h1 class="ml is-48 underline is-white"> {{ 'projects.header' | translate }}</h1>
-    <div class="mx mt flexy column gap stretch">
-      <ng-container *ngFor="let project of projects">
-        <ktbz-project-box [prefix]="prefix" [project]="project"></ktbz-project-box>
+    <div class="flexy row gap mx">
+      <div class="flexy column  gap stretch">
+        <ng-container *ngFor="let project of projects | async">
+          <ktbz-project-box [prefix]="prefix" [project]="project"></ktbz-project-box>
+        </ng-container>
+      </div>
+
+      <ng-container
+        *ngIf="selectedProject | async as project; else message"
+      >
+        <div class="details" (click)="clear()">
+          <pre>
+            {{ project | json }}
+          </pre>
+        </div>
       </ng-container>
-  </div>
+      <ng-template #message>
+        <div class="message">
+          <h1 class="is-32 is-white">Wybierz aby dowiedzieć się więcej</h1>
+        </div>
+      </ng-template>
+
+    </div>
+    <div class="whitespace"></div>
   </div>
 </div>

@@ -14,7 +14,6 @@ enum Language {
 })
 export class AppComponent {
   @HostListener('window:scroll', ['$event']) onWindowScroll(e: any) {
-    console.log(e);
 
     // Your Code Here
   }

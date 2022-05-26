@@ -1,10 +1,6 @@
-<ng-container *ngIf="isDetailed; else default">
 
-</ng-container>
-<ng-template #default>
-  <div class="box background-light" *ngIf="project">
+  <div class="box background-light" *ngIf="project" (click)="select()">
     <h1 class="is-32 is-white underline"> {{getLabel(project.name) | translate}} </h1>
     <p class="is-16 is-white bold"> {{ getLabel(project.type) | translate }} </p>
     <p class="is-16 is-white"> <a [href]="getUrl(project.url)" target="_blank" rel="noopener noreferrer"> {{getUrl(project.url)}} </a> </p>
   </div>
-</ng-template>

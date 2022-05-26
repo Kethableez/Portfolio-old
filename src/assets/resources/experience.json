@@ -1,0 +1,14 @@
+[
+  {
+    "company": "company.comarch",
+    "position": "position.frontend",
+    "startDate": "startDate.comarch",
+    "endDate": "endDate.comarch"
+  },
+  {
+    "company": "company.fiverr",
+    "position": "position.freelance",
+    "startDate": "startDate.fiverr",
+    "endDate": "endDate.fiverr"
+  }
+]

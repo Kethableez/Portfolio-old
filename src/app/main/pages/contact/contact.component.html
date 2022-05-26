@@ -40,12 +40,16 @@
 
         <div class="flexy row align gap">
           <i class="is-white fa-brands fa-github"></i>
-          <p class="is-16 is-white">@Kethableez</p>
+          <p class="is-16 is-white">
+ <a [href]="'https://www.github.com/Kethableez'" target="_blank" rel="noopener noreferrer"> @Kethableez </a>
+          </p>
         </div>
 
         <div class="flexy row align gap">
           <i class="is-white fa-brands fa-linkedin-in"></i>
-          <p class="is-16 is-white">/amadeusz-janiszyn</p>
+          <p class="is-16 is-white">
+            <a [href]="'https://www.linkedin.com/in/amadeusz-janiszyn/'" target="_blank" rel="noopener noreferrer"> /amadeusz-janiszyn </a>
+          </p>
         </div>
       </div>
 
@@ -55,28 +59,30 @@
       </div>
     </div>
 
-    <form action="https://formspree.io/f/xzboorvn" method="POST">
+    <form [formGroup]="contactForm">
       <h1 class="is-32 underline is-white">
         {{ getLabel("question") | translate }}
       </h1>
         <div class="control">
           <label class="is-16 bold is-white">Imię</label>
-          <input type="text" name="name" id="full-name" />
+          <!-- <input type="text" name="name" id="full-name" /> -->
+          <input type="text" formControlName="name">
         </div>
 
         <div class="control">
           <label class="is-16 bold is-white">Email</label>
-          <input type="text" name="_replyto" id="email-address" />
+          <input type="text" formControlName="_replyto">
+
         </div>
 
         <div class="control">
           <label class="is-16 bold is-white">Wiadomość</label>
-          <textarea type="text" name="message" id="message"></textarea>
+          <textarea type="text" formControlName="message"></textarea>
         </div>
 
-        <button class="button auto-margin" type="submit">
+        <div class="button auto-margin" (click)="submit()">
           <p class="is-32 is-white bold">Wyślij</p>
-        </button>
+        </div>
     </form>
 
     <div class="whitespace"></div>

@@ -1,10 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nova+Mono&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+@font-face {
+  font-family: 'LackRegular';
+  src:  url('assets/fonts/lack/Lack-Regular.woff') format('woff'),
+        url('assets/fonts/lack/Lack-Regular.woff2') format('woff2');
+}
+
 $primary: #496ca0;
 $secondary: #49A078;
 $gray: #454648;
 $black: #020202;
 $white: #fcf7f8;
+
+$font-main: 'LackRegular', Fallback, sans-serif;
+$font-secondary: 'Source Sans Pro', sans-serif;
 
 html,
 * {
@@ -80,13 +93,12 @@ a:hover {
 }
 
 h1 {
-  // font-family: "Lora", serif;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
+  font-family: $font-main;
+  font-weight: 300;
 }
 
 p, label {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
 }
 
@@ -174,13 +186,23 @@ p, label {
   border-radius: 15px;
   background-color: $secondary;
   cursor: pointer;
+  transition: .2s ease-in-out;
+
+  p {
+    font-family: $font-main;
+    font-weight: 300;
+  }
+}
+
+.button:hover {
+  background-color: #2d6d4f;
 }
 
 input, textarea {
   background-color: $white;
   border: none;
   border-radius: 5px;
-  font-family: "Poppins", sans-serif;
+  font-family: $font-secondary;
   font-weight: 300;
   padding: 0.25rem 0.5rem;
   font-size: 24px;
@@ -211,6 +233,34 @@ button {
   background-color: $black;
 }
 
+.progress {
+  position: relative;
+  width: 10rem;
+  height: 0.5rem;
+
+  .progress-bar {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $secondary;
+    height: 100%;
+    // border-radius: 0;
+    // transition: width 0.2s ease-in-out;
+  }
+
+  .progress-bg {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    border-radius: 0;
+  }
+}
+
 ktbz-navigation {
   position: absolute;
   top: 1rem;
@@ -219,4 +269,57 @@ ktbz-navigation {
 
 ktbz-projects {
   z-index: 0;
+}
+
+.gradient {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    209.18deg,
+    rgba(73, 108, 160, 0.2) 0%,
+    rgba(73, 160, 120, 0.2) 100%
+  );
+  backdrop-filter: blur(50px);
+}
+
+.image {
+  border-radius: 20px;
+  position: relative;
+  background-color: #454648;
+  width: 423px;
+  height: 566px;
+}
+
+.whitespace {
+  width: 30%;
+}
+
+.details {
+  border-radius: 25px;
+  flex-grow: 1;
+  background-color: #f5f5f5;
+}
+
+.message {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ktbz-exp-box,
+ktbz-edu-box,
+ktbz-project-box {
+  min-width: 450px;
+}
+
+.content {
+  height: 70%;
 }

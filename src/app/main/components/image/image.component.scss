@@ -9,27 +9,4 @@ img {
   object-fit: cover;
 }
 
-.gradient {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  border-radius: 20px;
 
-  background: linear-gradient(
-    209.18deg,
-    rgba(73, 108, 160, 0.2) 0%,
-    rgba(73, 160, 120, 0.2) 100%
-  );
-  backdrop-filter: blur(50px);
-}
-
-.image {
-  border-radius: 20px;
-  position: relative;
-  background-color: #454648;
-  width: 423px;
-  height: 566px;
-}
