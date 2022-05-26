@@ -1,0 +1,5 @@
+<div class="box background-dark" *ngIf="experience">
+  <h1 class="is-32 is-white underline"> {{getLabel(experience.company) | translate}} </h1>
+  <p class="is-16 is-white bold"> {{ getLabel(experience.position) | translate }} </p>
+  <p class="is-16 is-white italic"> {{ getLabel(experience.startDate) | translate }} - {{ getLabel(experience.endDate) | translate }} </p>
+</div>

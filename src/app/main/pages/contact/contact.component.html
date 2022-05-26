@@ -1,3 +1,84 @@
-<div class="flexy column container" [ngClass]="background">
+<div class="flexy column container center">
+  <div [ngClass]="background"></div>
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
+  <h1 class="is-48 mx underline is-white">
+    {{ getLabel("header") | translate }}
+  </h1>
+  <div class="flexy mx mt row stretch gap-10">
+    <div class="flexy column stretch whitespace">
+      <div class="data">
+        <h1 class="is-32 underline is-white mb">
+          {{ getLabel("data") | translate }}
+        </h1>
+
+        <div class="flexy row align gap">
+          <i class="is-white fa-solid fa-phone"></i>
+          <p class="is-16 is-white">+48 790 890 248</p>
+        </div>
+
+        <div class="flexy row align gap">
+          <i class="is-white fa-solid fa-at"></i>
+          <p class="is-16 is-white">janiszyn.amadeusz@gmail.com</p>
+        </div>
+
+        <div class="flexy row align gap">
+          <i class="is-white fa-solid fa-address-card"></i>
+          <p class="is-16 is-white">A.J Czartoryskiego 51/31</p>
+        </div>
+
+        <div class="flexy row align gap">
+          <i class="is-white empty fa-solid fa-address-card"></i>
+
+          <p class="is-16 is-white">51-126 Wrocław Polska</p>
+        </div>
+      </div>
+
+      <div class="data">
+        <h1 class="is-32 underline is-white mb">
+          {{ getLabel("social") | translate }}
+        </h1>
+
+        <div class="flexy row align gap">
+          <i class="is-white fa-brands fa-github"></i>
+          <p class="is-16 is-white">@Kethableez</p>
+        </div>
+
+        <div class="flexy row align gap">
+          <i class="is-white fa-brands fa-linkedin-in"></i>
+          <p class="is-16 is-white">/amadeusz-janiszyn</p>
+        </div>
+      </div>
+
+      <div class="button gap">
+        <p class="is-32 is-white bold">Pobierz CV</p>
+        <i class="is-32 is-white fa-solid fa-file-pdf"></i>
+      </div>
+    </div>
+
+    <form action="https://formspree.io/f/xzboorvn" method="POST">
+      <h1 class="is-32 underline is-white">
+        {{ getLabel("question") | translate }}
+      </h1>
+        <div class="control">
+          <label class="is-16 bold is-white">Imię</label>
+          <input type="text" name="name" id="full-name" />
+        </div>
+
+        <div class="control">
+          <label class="is-16 bold is-white">Email</label>
+          <input type="text" name="_replyto" id="email-address" />
+        </div>
+
+        <div class="control">
+          <label class="is-16 bold is-white">Wiadomość</label>
+          <textarea type="text" name="message" id="message"></textarea>
+        </div>
+
+        <button class="button auto-margin" type="submit">
+          <p class="is-32 is-white bold">Wyślij</p>
+        </button>
+    </form>
+
+    <div class="whitespace"></div>
+  </div>
 </div>

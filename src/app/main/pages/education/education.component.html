@@ -1,10 +1,11 @@
-<div class="flexy column container center" [ngClass]="background">
+<div class="flexy column container center">
+  <div [ngClass]="background"></div>
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
   <div class="positioned">
-    <h1 class="ml is-48 underline is-white"> {{ 'education.header' | translate }}</h1>
+    <h1 class="ml is-48 underline is-white"> {{ getLabel('header') | translate }}</h1>
     <div class="mx mt flexy row gap stretch">
       <ng-container *ngFor="let edu of edus">
-        <ktbz-edu-box [education]="edu"></ktbz-edu-box>
+        <ktbz-edu-box [prefix]="prefix" [education]="edu"></ktbz-edu-box>
       </ng-container>
   </div>
   </div>

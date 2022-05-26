@@ -1,3 +1,12 @@
-<div class="flexy column container" [ngClass]="background">
+<div class="flexy column center container">
+  <div [ngClass]="background"></div>
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
+  <div class="positioned">
+    <h1 class="ml is-48 underline is-white"> {{ getLabel('header')  | translate }}</h1>
+    <div class="mx mt flexy row gap stretch">
+      <ng-container *ngFor="let exp of exps">
+        <ktbz-exp-box [prefix]="prefix" [experience]="exp"></ktbz-exp-box>
+      </ng-container>
+  </div>
+  </div>
 </div>

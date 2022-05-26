@@ -22,6 +22,9 @@ import { ExperienceComponent } from './main/pages/experience/experience.componen
 import { ProjectsComponent } from './main/pages/projects/projects.component';
 import { ContactComponent } from './main/pages/contact/contact.component';
 import { EduBoxComponent } from './main/components/edu-box/edu-box.component';
+import { ExpBoxComponent } from './main/components/exp-box/exp-box.component';
+import { ProjectBoxComponent } from './main/components/project-box/project-box.component';
+import { BoxDirective } from './main/components/box.directive';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { EduBoxComponent } from './main/components/edu-box/edu-box.component';
     ProjectsComponent,
     ContactComponent,
     EduBoxComponent,
+    ExpBoxComponent,
+    ProjectBoxComponent,
+    BoxDirective,
   ],
   imports: [
     BrowserModule,
