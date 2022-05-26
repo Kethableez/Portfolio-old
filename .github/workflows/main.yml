@@ -24,12 +24,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - uses: ng-easy/npm-install@v2
         with:
           token: ${{secrets.ACTIONS_KEY || github.token }}
-      - name: Build
+      
+      - name: npm setup
+        uses: ng-easy/npm-setup@v1.7.2
         run: |
           npm i @angular/cli
+
+      - name: Build
+        run: |
           git fetch origin gh-pages
           git checkout gh-pages
           npm install
