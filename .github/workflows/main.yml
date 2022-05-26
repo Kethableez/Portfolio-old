@@ -28,6 +28,7 @@ jobs:
           token: ${{secrets.ACTIONS_KEY || github.token }}
       - name: Build
         run: |
+          git fetch origin gh-pages
           git checkout gh-pages
           ng build -c production
           git push origin gh-pages
