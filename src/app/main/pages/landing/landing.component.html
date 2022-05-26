@@ -1,12 +1,14 @@
-<div class="flexy column container" [ngClass]="background">
+<div class="flexy column container">
+  <div [ngClass]="background"></div>
+
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
   <div class="flexy column">
     <ktbz-image [image]="'photo-1'"></ktbz-image>
-    <h1 class="is-64">{{ "landing.header" | translate }}</h1>
-    <p class="is-32">{{ "landing.subheader" | translate }}</p>
+    <h1 class="is-64 is-secondary">{{ getLabel('header')  | translate }}</h1>
+    <p class="is-32 is-white">{{ getLabel('subheader') | translate }}</p>
   </div>
   <div class="flexy row mb">
-    <i class="fa-solid fa-angles-down"></i>
-    <p class="ml is-12">{{ "landing.scroll" | translate }}</p>
+    <i class="is-white fa-solid fa-angles-down"></i>
+    <p class="ml is-white is-12">{{ getLabel('scroll') | translate }}</p>
   </div>
 </div>

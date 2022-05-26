@@ -69,6 +69,7 @@ const BLOBS: { [key: string]: any } = {
 })
 export abstract class PageDirective {
   abstract pageType: PageType;
+  abstract prefix: string;
 
   background: string = '';
 
@@ -81,7 +82,6 @@ export abstract class PageDirective {
   }
 
   private setBlobs(blobNames: string[]) {
-    console.log(BLOBS);
     this.blobs = blobNames.map((name) => BLOBS[name]);
     console.log(this.blobs);
   }
@@ -92,6 +92,10 @@ export abstract class PageDirective {
 
     this.setBackground(background);
     this.setBlobs(blobNames);
+  }
+
+  getLabel(key: string): string {
+    return [this.prefix, key].join('.');
   }
 
   private prepareBackground(pageType: PageType) {

@@ -10,42 +10,43 @@ import { PageDirective } from '../../components/page.directive';
 })
 export class EducationComponent extends PageDirective implements OnInit {
   pageType: PageType = PageType.EDUCATION;
+  prefix = 'education';
 
   edus: Education[] = [
     {
-      field: 'field.mechatronics',
+      field: 'field.technician',
       title: 'title.technician',
       school: 'school.highschool',
-      startDate: 'startDate.highschool',
-      endDate: 'endDate.highschool',
+      startDate: 'startDate.technician',
+      endDate: 'endDate.technician',
       achievements: [
-        'achievement.highschool.1',
-        'achievement.highschool.2',
-        'achievement.highschool.3',
+        'achievement.technician.1',
+        'achievement.technician.2',
+        'achievement.technician.3',
       ]
     },
     {
-      field: 'field.controlengineering',
+      field: 'field.engineer',
       title: 'title.engineer',
-      school: 'school.university1',
-      startDate: 'startDate.university1',
-      endDate: 'endDate.university1',
+      school: 'school.university',
+      startDate: 'startDate.engineer',
+      endDate: 'endDate.engineer',
       achievements: [
-        'achievement.university1.1',
-        'achievement.university1.2',
-        'achievement.university1.3',
+        'achievement.engineer.1',
+        'achievement.engineer.2',
+        'achievement.engineer.3',
       ]
     },
     {
-      field: 'field.computerscience',
+      field: 'field.master',
       title: 'title.master',
-      school: 'school.university2',
-      startDate: 'startDate.university2',
-      endDate: 'endDate.university2',
+      school: 'school.university',
+      startDate: 'startDate.master',
+      endDate: 'endDate.master',
       achievements: [
-        'achievement.university2.1',
-        'achievement.university2.2',
-        'achievement.university2.3',
+        'achievement.master.1',
+        'achievement.master.2',
+        'achievement.master.3',
       ]
     }
   ]

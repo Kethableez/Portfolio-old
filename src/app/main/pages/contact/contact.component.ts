@@ -9,6 +9,7 @@ import { PageDirective } from '../../components/page.directive';
 })
 export class ContactComponent extends PageDirective implements OnInit {
   pageType: PageType = PageType.CONTACT;
+  prefix = 'contact';
 
   constructor() {
     super();

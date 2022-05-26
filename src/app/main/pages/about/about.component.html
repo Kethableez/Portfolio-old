@@ -1,4 +1,5 @@
-<div class="flexy column container center" [ngClass]="background">
+<div class="flexy column container center">
+  <div [ngClass]="background"></div>
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
   <div class="ml flexy row gap">
     <ktbz-image [image]="'photo-2'"></ktbz-image>
@@ -6,15 +7,15 @@
     <div class="flexy column">
       <section class="about">
         <h1 class="is-48 is-white underline">
-          {{ "about.summary.header" | translate }}
+          {{ getLabel('summary.header') | translate }}
         </h1>
         <p class="is-16 is-white">
-          {{ "about.summary.paragraph" | translate }}
+          {{ getLabel('summary.paragraph')  | translate }}
         </p>
       </section>
       <section class="skills">
         <h1 class="is-48 is-white underline">
-          {{ "about.skills.header" | translate }}
+          {{ getLabel('skills.header')  | translate }}
         </h1>
         <ktbz-skills></ktbz-skills>
       </section>
