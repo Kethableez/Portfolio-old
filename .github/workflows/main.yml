@@ -28,7 +28,7 @@ jobs:
           token: ${{secrets.ACTIONS_KEY || github.token }}
       - name: Build
       - uses: ng-easy/npm-install@v2
-        run: 
+        run: |
           git fetch origin gh-pages
           git checkout gh-pages
           npm install -g @angular/cli
