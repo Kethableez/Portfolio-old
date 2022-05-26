@@ -24,6 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - uses: colbyhill21/angular-full-ci/@v1.0
         with:
           token: ${{secrets.ACTIONS_KEY || github.token }}
       - name: Build
