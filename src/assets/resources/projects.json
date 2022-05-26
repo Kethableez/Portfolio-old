@@ -1,0 +1,40 @@
+[
+  {
+    "name": "tuziemiec.name",
+    "type": "tuziemiec.type",
+    "description": "tuziemiec.description",
+    "url": "Tuziemiec",
+    "photoUrl": "tuziemiec.photoUrl",
+    "technologies": [
+      "technologies.angular",
+      "technologies.java",
+      "technologies.mysql",
+      "technologies.docker"
+    ]
+  },
+  {
+    "name": "walker.name",
+    "type": "walker.type",
+    "description": "walker.description",
+    "url": "Walker",
+    "photoUrl": "walker.photoUrl",
+    "technologies": [
+      "technologies.angular",
+      "technologies.java",
+      "technologies.mongodb"
+    ]
+  },
+  {
+    "name": "anytravel.name",
+    "type": "anytravel.type",
+    "description": "anytravel.description",
+    "url": "AnyTravel",
+    "photoUrl": "anytravel.photoUrl",
+    "technologies": [
+      "technologies.angular",
+      "technologies.nodejs",
+      "technologies.mongodb",
+      "technologies.docker"
+    ]
+  }
+]

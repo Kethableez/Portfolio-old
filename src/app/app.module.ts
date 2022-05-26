@@ -25,6 +25,11 @@ import { EduBoxComponent } from './main/components/edu-box/edu-box.component';
 import { ExpBoxComponent } from './main/components/exp-box/exp-box.component';
 import { ProjectBoxComponent } from './main/components/project-box/project-box.component';
 import { BoxDirective } from './main/components/box.directive';
+import { EducationStateModule } from './core/store/education';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { ExperienceStateModule } from './core/store/experience';
+import { ProjectStateModule } from './core/store/projects';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,9 @@ import { BoxDirective } from './main/components/box.directive';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    EducationStateModule,
+    ExperienceStateModule,
+    ProjectStateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -60,6 +68,7 @@ import { BoxDirective } from './main/components/box.directive';
     }),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],
