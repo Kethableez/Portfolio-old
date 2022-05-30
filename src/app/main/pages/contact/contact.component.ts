@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PageType } from 'src/app/core/models/page-type.model';
 import { PageDirective } from '../../components/page.directive';
@@ -15,10 +15,11 @@ export class ContactComponent extends PageDirective implements OnInit {
 
   constructor(
     private builder: FormBuilder,
-    private contactService: ContactService
-  ) {
-    super();
-  }
+    private contactService: ContactService,
+      protected override ref: ElementRef
+    ) {
+      super(ref);
+    }
 
   contactForm = this.builder.group({
     name: ['', Validators.required],

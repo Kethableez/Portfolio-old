@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PageType } from 'src/app/core/models/page-type.model';
 import { EducationActions, getEducation, getEducations } from 'src/app/core/store/education';
@@ -18,9 +18,10 @@ export class EducationComponent extends PageDirective implements OnInit {
   selectedEducation = this.store$.select(getEducation);
 
   constructor(
-    private store$: Store<RootState>
+    private store$: Store<RootState>,
+    protected override ref: ElementRef
   ) {
-    super();
+    super(ref);
     this.store$.dispatch(EducationActions.initEducation());
   }
 

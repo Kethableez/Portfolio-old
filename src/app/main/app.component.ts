@@ -1,5 +1,7 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, QueryList, ViewChildren } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
 import { PageType } from '../core/models/page-type.model';
 
 enum Language {
@@ -13,20 +15,46 @@ enum Language {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @HostListener('window:scroll', ['$event']) onWindowScroll(e: any) {
+  @ViewChildren('section') sections: QueryList<any> = new QueryList();
 
-    // Your Code Here
+  sectionChanged = new BehaviorSubject<PageType>(PageType.LANDING);
+
+  @HostListener('window:scroll', ['$event']) onWindowScroll() {
+    this.sections.forEach(section => {
+      if(this.isSectionVisible(section.ref)) this.sectionChanged.next(section.pageType);
+    });
+
+    this.changeTitle();
   }
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    private title: Title,
+  ) {
     translate.setDefaultLang(Language.PL);
     translate.use(Language.PL);
+    title.setTitle(this.getTitleKey(this.sectionChanged.value));
   }
 
-  title = 'app.title';
+  changeTitle() {
+    this.translate.get(this.sectionChanged.value).subscribe(title => {
+      this.title.setTitle(this.getTitleKey(title));
+    }).unsubscribe();
+  }
+
+  isSectionVisible(section: ElementRef<any>) {
+    const rect = section.nativeElement.getBoundingClientRect();
+    const topShown = rect.top >= 0;
+    const bottomShown = rect.bottom <= window.innerHeight;
+    return topShown && bottomShown;
+  }
 
   changeLanguage(language: Language) {
     this.translate.use(language);
+  }
+
+  getTitleKey(page: string) {
+    return `title.${page}`;
   }
 
   get Language() {

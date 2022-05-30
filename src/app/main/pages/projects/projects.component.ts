@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PageType } from 'src/app/core/models/page-type.model';
 import { getProject, getProjects, ProjectActions } from 'src/app/core/store/projects';
@@ -17,10 +17,10 @@ export class ProjectsComponent extends PageDirective implements OnInit {
   selectedProject = this.store$.select(getProject);
 
   constructor(
-    private store$: Store<RootState>
-
-  ) {
-    super();
+    private store$: Store<RootState>,
+      protected override ref: ElementRef
+    ) {
+      super(ref);
     this.store$.dispatch(ProjectActions.initProject());
   }
 

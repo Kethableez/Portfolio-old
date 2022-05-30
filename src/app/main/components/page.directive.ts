@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { PageType } from 'src/app/core/models/page-type.model';
 
 const BLOB1 = {
@@ -75,7 +75,11 @@ export abstract class PageDirective {
 
   blobs: any[] = [];
 
-  constructor() {}
+  constructor(
+    protected ref: ElementRef
+  ) {
+    console.log(this.ref.nativeElement);
+  }
 
   private setBackground(background: string) {
     this.background = background;
