@@ -18,10 +18,11 @@
       <ng-container
         *ngIf="selectedEducation | async as education; else message"
       >
-        <div class="details" (click)="clear()">
-          <pre>
-            {{ education | json }}
-          </pre>
+        <div class="details">
+          <ktbz-education-details
+            [education]="education"
+            (clear)="clear()"
+          ></ktbz-education-details>
         </div>
       </ng-container>
       <ng-template #message>

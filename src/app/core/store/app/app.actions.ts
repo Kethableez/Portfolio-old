@@ -1,8 +1,20 @@
 import { createAction, props } from '@ngrx/store';
-import { Language } from 'src/app/main/app.component';
+import { Language } from '../../models/language.model';
+import { Theme } from '../../models/theme.model';
 
-export const setLanguage = createAction('[App] Set Language', props<{ language: Language }>());
+export const initApp = createAction('[App] Init App');
 
-export const setTheme = createAction('[App] Set Theme', props<{ theme: string }>());
+export const setLanguage = createAction(
+  '[App] Set Language',
+  props<{ language: Language }>()
+);
 
-export const setTitle = createAction('[App] Set Title', props<{ title: string }>());
+export const setTheme = createAction(
+  '[App] Set Theme',
+  props<{ theme: Theme }>()
+);
+
+export const setTitle = createAction(
+  '[App] Set Title',
+  props<{ title: string }>()
+);

@@ -6,10 +6,10 @@
     "url": "Tuziemiec",
     "photoUrl": "tuziemiec.photoUrl",
     "technologies": [
-      "technologies.angular",
-      "technologies.java",
-      "technologies.mysql",
-      "technologies.docker"
+      "technology.angular",
+      "technology.java",
+      "technology.mysql",
+      "technology.docker"
     ]
   },
   {
@@ -19,9 +19,9 @@
     "url": "Walker",
     "photoUrl": "walker.photoUrl",
     "technologies": [
-      "technologies.angular",
-      "technologies.java",
-      "technologies.mongodb"
+      "technology.angular",
+      "technology.java",
+      "technology.mongodb"
     ]
   },
   {
@@ -31,10 +31,10 @@
     "url": "AnyTravel",
     "photoUrl": "anytravel.photoUrl",
     "technologies": [
-      "technologies.angular",
-      "technologies.nodejs",
-      "technologies.mongodb",
-      "technologies.docker"
+      "technology.angular",
+      "technology.nodejs",
+      "technology.mongodb",
+      "technology.docker"
     ]
   }
 ]

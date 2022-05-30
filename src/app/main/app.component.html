@@ -1,11 +1,11 @@
-<ktbz-navigation
-  [currentPage]="sectionChanged.value"
-></ktbz-navigation>
-<div class="scroll" #scroll (scroll)="onWindowScroll()">
-  <ktbz-landing #section></ktbz-landing>
-  <ktbz-about #section></ktbz-about>
-  <ktbz-education #section></ktbz-education>
-  <ktbz-experience #section></ktbz-experience>
-  <ktbz-projects #section></ktbz-projects>
-  <ktbz-contact #section></ktbz-contact>
+<div [ngClass]="(theme$ | async) === 'dark' ? 'dark' : 'light'">
+  <ktbz-navigation [currentPage]="visibleSection"></ktbz-navigation>
+  <div class="scroll" #scroll (scroll)="onWindowScroll()">
+    <ktbz-landing #section></ktbz-landing>
+    <ktbz-about #section></ktbz-about>
+    <ktbz-education #section></ktbz-education>
+    <ktbz-experience #section></ktbz-experience>
+    <ktbz-projects #section></ktbz-projects>
+    <ktbz-contact #section></ktbz-contact>
+  </div>
 </div>

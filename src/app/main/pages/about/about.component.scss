@@ -7,7 +7,12 @@
 }
 
 ktbz-image {
-  flex: 0 0 423px;
+  flex: 1 0 0;
+}
+
+.mx {
+  margin-left: 15rem;
+  margin-right: 8rem;
 }
 
 // .about {
@@ -16,4 +21,8 @@ ktbz-image {
 
 .gap {
   gap: 2rem;
+}
+
+.section {
+  flex: 2 0 0;
 }

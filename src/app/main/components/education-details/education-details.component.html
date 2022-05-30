@@ -1,0 +1,12 @@
+<i class="is-black is-32 is-button fa-solid fa-xmark" (click)="doClear()"></i>
+
+<h1 class="is-32 is-black underline">
+  {{ getLabel("achievements.header") | translate }}
+</h1>
+
+<ng-container *ngFor="let achievement of education.achievements">
+  <div class="flexy gap row">
+    <i class="is-black fa-solid fa-caret-right"></i>
+    <p class="is-16 is-black">{{ getLabel(achievement) | translate }}</p>
+  </div>
+</ng-container>

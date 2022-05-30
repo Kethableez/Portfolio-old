@@ -3,29 +3,34 @@
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
 
   <div class="content flexy column gap stretch">
-    <h1 class="ml is-48 underline is-white"> {{ getLabel('header')  | translate }}</h1>
+    <h1 class="ml is-48 underline is-white">
+      {{ getLabel("header") | translate }}
+    </h1>
     <div class="flexy row gap mx">
-      <div class="flexy column  gap stretch">
+      <div class="flexy column gap stretch">
         <ng-container *ngFor="let experience of experiences | async">
-          <ktbz-exp-box [prefix]="prefix" [experience]="experience"></ktbz-exp-box>
+          <ktbz-exp-box
+            [prefix]="prefix"
+            [experience]="experience"
+          ></ktbz-exp-box>
         </ng-container>
       </div>
 
       <ng-container
-      *ngIf="selectedExperience | async as experience; else message"
-    >
-      <div class="details" (click)="clear()">
-        <pre>
-          {{ experience | json }}
-        </pre>
-      </div>
-    </ng-container>
-    <ng-template #message>
-      <div class="message">
-        <h1 class="is-32 is-white">Wybierz aby dowiedzieć się więcej</h1>
-      </div>
-    </ng-template>
-
+        *ngIf="selectedExperience | async as experience; else message"
+      >
+        <div class="details">
+          <ktbz-experience-details
+            [experience]="experience"
+            (clear)="clear()"
+          ></ktbz-experience-details>
+        </div>
+      </ng-container>
+      <ng-template #message>
+        <div class="message">
+          <h1 class="is-32 is-white">Wybierz aby dowiedzieć się więcej</h1>
+        </div>
+      </ng-template>
     </div>
     <div class="whitespace"></div>
   </div>

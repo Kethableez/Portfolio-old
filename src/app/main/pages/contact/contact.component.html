@@ -41,20 +41,32 @@
         <div class="flexy row align gap">
           <i class="is-white fa-brands fa-github"></i>
           <p class="is-16 is-white">
- <a [href]="'https://www.github.com/Kethableez'" target="_blank" rel="noopener noreferrer"> @Kethableez </a>
+            <a
+              [href]="'https://www.github.com/Kethableez'"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @Kethableez
+            </a>
           </p>
         </div>
 
         <div class="flexy row align gap">
           <i class="is-white fa-brands fa-linkedin-in"></i>
           <p class="is-16 is-white">
-            <a [href]="'https://www.linkedin.com/in/amadeusz-janiszyn/'" target="_blank" rel="noopener noreferrer"> /amadeusz-janiszyn </a>
+            <a
+              [href]="'https://www.linkedin.com/in/amadeusz-janiszyn/'"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              /amadeusz-janiszyn
+            </a>
           </p>
         </div>
       </div>
 
       <div class="button gap">
-        <p class="is-32 is-white bold">Pobierz CV</p>
+        <p class="is-32 is-white bold">CV</p>
         <i class="is-32 is-white fa-solid fa-file-pdf"></i>
       </div>
     </div>
@@ -63,26 +75,25 @@
       <h1 class="is-32 underline is-white">
         {{ getLabel("question") | translate }}
       </h1>
-        <div class="control">
-          <label class="is-16 bold is-white">Imię</label>
-          <!-- <input type="text" name="name" id="full-name" /> -->
-          <input type="text" formControlName="name">
-        </div>
+      <div class="control">
+        <label class="is-16 bold is-white">Imię</label>
+        <!-- <input type="text" name="name" id="full-name" /> -->
+        <input type="text" formControlName="name" />
+      </div>
 
-        <div class="control">
-          <label class="is-16 bold is-white">Email</label>
-          <input type="text" formControlName="_replyto">
+      <div class="control">
+        <label class="is-16 bold is-white">Email</label>
+        <input type="text" formControlName="_replyto" />
+      </div>
 
-        </div>
+      <div class="control">
+        <label class="is-16 bold is-white">Wiadomość</label>
+        <textarea type="text" formControlName="message"></textarea>
+      </div>
 
-        <div class="control">
-          <label class="is-16 bold is-white">Wiadomość</label>
-          <textarea type="text" formControlName="message"></textarea>
-        </div>
-
-        <div class="button auto-margin" (click)="submit()">
-          <p class="is-32 is-white bold">Wyślij</p>
-        </div>
+      <div class="button auto-margin" (click)="submit()">
+        <p class="is-32 is-white bold">Wyślij</p>
+      </div>
     </form>
 
     <div class="whitespace"></div>

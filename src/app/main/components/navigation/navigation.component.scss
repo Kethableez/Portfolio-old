@@ -1,34 +1,9 @@
-.bullet {
-  width: 12px;
-  height: 12px;
-  border-radius: 5px;
-  border: 1px solid #fff;
-  margin: 0 4px;
-}
-
-.fill {
-  background-color: #fff;
-}
-
-.lang {
-  cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid #fff;
-  margin: 0 4px;
-  padding: 0 5px;
-  font-size: 8px;
-  font-family: "Martel Sans", sans-serif;
-  color: #fff;
-  transition: 0.2s ease-in-out;
-}
-
-.lang:hover {
-  background-color: #fff;
-  color: #000;
-}
-
 .flexy {
   width: fit-content;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.visually-hidden {
+  opacity: 0;
 }

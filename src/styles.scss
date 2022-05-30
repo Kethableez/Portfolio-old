@@ -1,23 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nova+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nova+Mono&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
 
 @font-face {
-  font-family: 'LackRegular';
-  src:  url('assets/fonts/lack/Lack-Regular.woff') format('woff'),
-        url('assets/fonts/lack/Lack-Regular.woff2') format('woff2');
+  font-family: "LackRegular";
+  src: url("assets/fonts/lack/Lack-Regular.woff") format("woff"),
+    url("assets/fonts/lack/Lack-Regular.woff2") format("woff2");
 }
 
 $primary: #496ca0;
-$secondary: #49A078;
-$gray: #454648;
-$black: #020202;
-$white: #fcf7f8;
+$secondary: #49a078;
 
-$font-main: 'LackRegular', Fallback, sans-serif;
-$font-secondary: 'Source Sans Pro', sans-serif;
+$background_primary_light: #fcf7f8;
+$background_primary_dark: #020202;
+$background_secondary_light: #c6c2c3;
+$background_secondary_dark: #454648;
+
+$text-dark: #fcf7f8;
+$text-light: #020202;
+
+$font-main: "LackRegular", Fallback, sans-serif;
+$font-secondary: "Source Sans Pro", sans-serif;
 
 html,
 * {
@@ -56,8 +61,123 @@ a:hover {
 }
 
 .scroll::-webkit-scrollbar-track {
-  background-color: $gray;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 5px;
+  margin: 0 4px;
+  transition: 0.2s ease-in-out;
+}
+
+.visually-hidden {
+  transition: 0.1s ease-in-out;
+}
+
+.lang {
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 4px;
+  padding: 0 5px;
+  font-size: 8px;
+  font-family: "Martel Sans", sans-serif;
+  transition: 0.2s ease-in-out;
+}
+
+.light {
+  .scroll::-webkit-scrollbar-track {
+    background-color: $background_secondary_light;
+  }
+
+  .bullet {
+    border: 2px solid $text-light;
+  }
+
+  .fill {
+    background-color: $text-light;
+  }
+
+  .lang {
+    border: 2px solid $text-light;
+    color: $text-light;
+  }
+
+  .lang:hover {
+    background-color: $text-light;
+    color: $text-dark;
+  }
+
+  .bg-light {
+    background: $background_primary_light;
+  }
+  .bg-light {
+    background: $background_secondary_light;
+  }
+
+  .background-light {
+    background-color: $background_secondary_light;
+  }
+
+  .background-dark {
+    background-color: $background_primary_light;
+  }
+
+  .is-white {
+    color: $text-light;
+  }
+
+  .is-black {
+    color: $text-dark;
+  }
+}
+
+.dark {
+  .scroll::-webkit-scrollbar-track {
+    background-color: $background_secondary_dark;
+  }
+
+  .bullet {
+    border: 2px solid $text-dark;
+  }
+
+  .lang {
+    border: 2px solid $text-dark;
+    color: $text-dark;
+  }
+
+  .lang:hover {
+    background-color: $text-dark;
+    color: $text-light;
+  }
+
+  .fill {
+    background-color: $text-dark;
+  }
+
+  .bg-dark {
+    background: $background_primary_dark;
+  }
+  .bg-light {
+    background: $background_secondary_dark;
+  }
+
+  .background-light {
+    background-color: $background_secondary_dark;
+  }
+
+  .background-dark {
+    background-color: $background_primary_dark;
+  }
+
+  .is-white {
+    color: $text-dark;
+  }
+
+  .is-black {
+    color: $text-light;
+  }
 }
 
 .box {
@@ -97,8 +217,9 @@ h1 {
   font-weight: 300;
 }
 
-p, label {
-  font-family: 'Poppins', sans-serif;
+p,
+label {
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
 }
 
@@ -107,27 +228,23 @@ p, label {
 }
 
 .is-16 {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .is-24 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .is-32 {
-  font-size: 32px;
+  font-size: 2rem;
 }
 
 .is-48 {
-  font-size: 48px;
+  font-size: 2.5rem;
 }
 
 .is-64 {
-  font-size: 64px;
-}
-
-.is-white {
-  color: $white;
+  font-size: 3rem;
 }
 
 .is-primary {
@@ -173,7 +290,6 @@ p, label {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: $black;
 }
 
 .button {
@@ -186,7 +302,7 @@ p, label {
   border-radius: 15px;
   background-color: $secondary;
   cursor: pointer;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 
   p {
     font-family: $font-main;
@@ -198,8 +314,9 @@ p, label {
   background-color: #2d6d4f;
 }
 
-input, textarea {
-  background-color: $white;
+input,
+textarea {
+  background-color: $text-dark;
   border: none;
   border-radius: 5px;
   font-family: $font-secondary;
@@ -222,15 +339,6 @@ button {
   z-index: -2;
   width: 100vw;
   height: 100vh;
-  background: $gray;
-}
-
-.background-light {
-  background-color: $gray;
-}
-
-.background-dark {
-  background-color: $black;
 }
 
 .progress {
@@ -256,19 +364,24 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $white;
+    background-color: $text-dark;
     border-radius: 0;
   }
 }
 
 ktbz-navigation {
   position: absolute;
-  top: 1rem;
-  right: 5rem;
+  top: 1.5rem;
+  right: 8rem;
+  z-index: 100;
 }
 
 ktbz-projects {
   z-index: 0;
+}
+
+ktbz-image {
+  // margin: auto;
 }
 
 .gradient {
@@ -277,9 +390,8 @@ ktbz-projects {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 0;
   border-radius: 20px;
-
   background: linear-gradient(
     209.18deg,
     rgba(73, 108, 160, 0.2) 0%,
@@ -292,8 +404,6 @@ ktbz-projects {
   border-radius: 20px;
   position: relative;
   background-color: #454648;
-  width: 423px;
-  height: 566px;
 }
 
 .whitespace {
@@ -301,9 +411,18 @@ ktbz-projects {
 }
 
 .details {
+  position: relative;
   border-radius: 25px;
   flex-grow: 1;
+  padding: 1rem;
   background-color: #f5f5f5;
+}
+
+.is-button {
+  position: absolute;
+  // top: 1rem;
+  cursor: pointer;
+  right: 1rem;
 }
 
 .message {

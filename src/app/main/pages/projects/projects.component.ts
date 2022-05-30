@@ -1,7 +1,12 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { tap } from 'rxjs';
 import { PageType } from 'src/app/core/models/page-type.model';
-import { getProject, getProjects, ProjectActions } from 'src/app/core/store/projects';
+import {
+  getProject,
+  getProjects,
+  ProjectActions,
+} from 'src/app/core/store/projects';
 import { RootState } from 'src/app/core/store/root.state';
 import { PageDirective } from '../../components/page.directive';
 
@@ -14,13 +19,13 @@ export class ProjectsComponent extends PageDirective implements OnInit {
   pageType: PageType = PageType.PROJECTS;
   prefix = 'projects';
   projects = this.store$.select(getProjects);
-  selectedProject = this.store$.select(getProject);
+  selectedProject = this.store$.select(getProject).pipe(tap(console.log));
 
   constructor(
     private store$: Store<RootState>,
-      protected override ref: ElementRef
-    ) {
-      super(ref);
+    protected override ref: ElementRef
+  ) {
+    super(ref);
     this.store$.dispatch(ProjectActions.initProject());
   }
 
@@ -29,6 +34,7 @@ export class ProjectsComponent extends PageDirective implements OnInit {
   }
 
   clear() {
+    console.log('clear?');
     this.store$.dispatch(ProjectActions.clearProject());
   }
 }

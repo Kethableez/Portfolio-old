@@ -33,6 +33,10 @@ import { ExperienceStateModule } from './core/store/experience';
 import { ProjectStateModule } from './core/store/projects';
 import { AppStateModule } from './core/store/app/app-state.module';
 import { InitService } from './core/services/init.service';
+import { DetailsDirective } from './main/components/details.directive';
+import { EducationDetailsComponent } from './main/components/education-details/education-details.component';
+import { ExperienceDetailsComponent } from './main/components/experience-details/experience-details.component';
+import { ProjectDetailsComponent } from './main/components/project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,9 @@ import { InitService } from './core/services/init.service';
     ExpBoxComponent,
     ProjectBoxComponent,
     BoxDirective,
+    EducationDetailsComponent,
+    ExperienceDetailsComponent,
+    ProjectDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,8 +92,8 @@ import { InitService } from './core/services/init.service';
       provide: APP_INITIALIZER,
       useFactory: appInit,
       deps: [InitService],
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
