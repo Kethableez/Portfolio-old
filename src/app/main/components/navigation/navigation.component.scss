@@ -6,6 +6,10 @@
   margin: 0 4px;
 }
 
+.fill {
+  background-color: #fff;
+}
+
 .lang {
   cursor: pointer;
   border-radius: 5px;
@@ -24,6 +28,7 @@
 }
 
 .flexy {
+  width: fit-content;
   justify-content: center;
   align-items: center;
 }

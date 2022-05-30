@@ -70,8 +70,12 @@ import { ProjectStateModule } from './core/store/projects';
     }),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
+  exports: [TranslateModule],
   providers: [],
   bootstrap: [AppComponent],
 })

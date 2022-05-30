@@ -1,11 +1,12 @@
-<!-- <ktbz-navigation></ktbz-navigation> -->
-<!-- (scroll)="onWindowScroll($event)" -->
-<!-- <h1>Is div shown? {{isAboutVisible ? 'Yes!' : 'No :-('}}</h1> -->
-<div class="scroll" #scroll (scroll)="onWindowScroll()" >
-  <ktbz-landing #section ></ktbz-landing>
-  <ktbz-about #section ></ktbz-about>
-  <ktbz-education #section ></ktbz-education>
-  <ktbz-experience #section ></ktbz-experience>
-  <ktbz-projects #section ></ktbz-projects>
-  <ktbz-contact #section ></ktbz-contact>
+<ktbz-navigation
+  [currentPage]="sectionChanged.value"
+  (changedLang)="changeLanguage($event)"
+></ktbz-navigation>
+<div class="scroll" #scroll (scroll)="onWindowScroll()">
+  <ktbz-landing #section></ktbz-landing>
+  <ktbz-about #section></ktbz-about>
+  <ktbz-education #section></ktbz-education>
+  <ktbz-experience #section></ktbz-experience>
+  <ktbz-projects #section></ktbz-projects>
+  <ktbz-contact #section></ktbz-contact>
 </div>

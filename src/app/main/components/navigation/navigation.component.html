@@ -1,8 +1,8 @@
 <div class="flexy row">
-  <div class="bullet"></div>
-  <div class="bullet"></div>
-  <div class="bullet"></div>
-  <div class="bullet"></div>
-  <div class="bullet"></div>
-  <div class="lang"> {{'app.lang' | translate }}</div>
+  <div class="bullet" [ngClass]="isFilled(PageType.ABOUT)"></div>
+  <div class="bullet" [ngClass]="isFilled(PageType.EDUCATION)"></div>
+  <div class="bullet" [ngClass]="isFilled(PageType.EXPERIENCE)"></div>
+  <div class="bullet" [ngClass]="isFilled(PageType.PROJECTS)"></div>
+  <div class="bullet" [ngClass]="isFilled(PageType.CONTACT)"></div>
+  <div class="lang" (click)="changeLang()">{{ "app.lang" | translate }}</div>
 </div>
