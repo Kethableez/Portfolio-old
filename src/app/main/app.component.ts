@@ -3,12 +3,15 @@ import {
   ElementRef,
   HostListener,
   QueryList,
-  ViewChildren,
+  ViewChildren
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { PageType } from '../core/models/page-type.model';
+import { AppActions } from '../core/store/app';
+import { RootState } from '../core/store/root.state';
 
 export enum Language {
   PL = 'pl',
@@ -30,26 +33,20 @@ export class AppComponent {
       if (this.isSectionVisible(section.ref)) {
         console.log('next', section.pageType);
         this.sectionChanged.next(section.pageType);
+        this.changeTitle();
       }
     });
 
-    this.changeTitle();
   }
 
-  constructor(private translate: TranslateService, private title: Title) {
-    translate.addLangs([Language.PL, Language.EN]);
-    translate.setDefaultLang(Language.PL);
-    translate.use(Language.PL);
-    title.setTitle(this.getTitleKey(this.sectionChanged.value));
+  constructor(
+    private store$: Store<RootState>,
+    private translate: TranslateService,
+    private title: Title) {
   }
 
   changeTitle() {
-    this.translate
-      .get(this.sectionChanged.value)
-      .subscribe((title) => {
-        this.title.setTitle(this.getTitleKey(title));
-      })
-      .unsubscribe();
+    this.store$.dispatch(AppActions.setTitle({ title: this.sectionChanged.value }));
   }
 
   isSectionVisible(section: ElementRef<any>) {
@@ -63,13 +60,10 @@ export class AppComponent {
     return Math.floor(num);
   }
 
-  changeLanguage(language: Language) {
-    this.translate.use(language);
-  }
-
   getTitleKey(page: string) {
     return `title.${page}`;
   }
+
 
   get Language() {
     return Language;

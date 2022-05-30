@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { PageType } from 'src/app/core/models/page-type.model';
 import { SettingService } from 'src/app/core/services/setting.service';
+import { AppActions } from 'src/app/core/store/app';
+import { RootState } from 'src/app/core/store/root.state';
 import { Language } from '../../app.component';
 
 @Component({
@@ -10,9 +13,11 @@ import { Language } from '../../app.component';
 })
 export class NavigationComponent implements OnInit {
   @Input() currentPage!: PageType;
-  @Output() changedLang = new EventEmitter<Language>();
 
-  constructor(private settings: SettingService) {}
+  constructor(
+    private settings: SettingService,
+    private store$: Store<RootState>
+    ) {}
 
   ngOnInit(): void {}
 
@@ -31,6 +36,6 @@ export class NavigationComponent implements OnInit {
   changeLang() {
     const lang =
       this.settings.currentLang === Language.PL ? Language.EN : Language.PL;
-    this.changedLang.emit(lang);
+    this.store$.dispatch(AppActions.setLanguage({ language: lang }));
   }
 }

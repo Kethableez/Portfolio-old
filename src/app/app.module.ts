@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -31,6 +31,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ExperienceStateModule } from './core/store/experience';
 import { ProjectStateModule } from './core/store/projects';
+import { AppStateModule } from './core/store/app/app-state.module';
+import { InitService } from './core/services/init.service';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,7 @@ import { ProjectStateModule } from './core/store/projects';
     EducationStateModule,
     ExperienceStateModule,
     ProjectStateModule,
+    AppStateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -76,7 +79,15 @@ import { ProjectStateModule } from './core/store/projects';
     }),
   ],
   exports: [TranslateModule],
-  providers: [],
+  providers: [
+    InitService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInit,
+      deps: [InitService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
@@ -84,4 +95,7 @@ export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
-1;
+
+export function appInit(initService: InitService) {
+  return () => initService.load();
+}
