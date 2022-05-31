@@ -1,18 +1,19 @@
 import { createReducer, on } from '@ngrx/store';
 import { Language } from '../../models/language.model';
+import { PageType } from '../../models/page-type.model';
 import { Theme } from '../../models/theme.model';
 import { setLanguage, setTheme, setTitle } from './app.actions';
 
 export interface State {
   language: Language;
   theme: Theme;
-  title: string;
+  title: PageType;
 }
 
 export const initialState: State = {
   language: Language.PL,
   theme: Theme.DARK,
-  title: 'KTBZ',
+  title: PageType.LANDING
 };
 
 export const appKey = 'app';

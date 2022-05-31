@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { concatMap, map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { Language } from '../../models/language.model';
+import { PageType } from '../../models/page-type.model';
 import { Theme } from '../../models/theme.model';
 import { RootState } from '../root.state';
 import { initApp, setLanguage, setTheme, setTitle } from './app.actions';
@@ -23,7 +24,7 @@ export class AppEffects {
     this.actions$.pipe(
       ofType(initApp),
       concatMap(() => [
-        setTitle({ title: 'landing' }),
+        setTitle({ title: PageType.LANDING}),
         setLanguage({ language: Language.PL }),
         setTheme({ theme: Theme.DARK }),
       ])

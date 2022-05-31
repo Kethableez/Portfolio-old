@@ -1,5 +1,8 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { PageType } from 'src/app/core/models/page-type.model';
+import { isPageVisible } from 'src/app/core/store/app';
+import { RootState } from 'src/app/core/store/root.state';
 
 const BLOB1 = {
   blob: 'blob-1',
@@ -68,6 +71,9 @@ const BLOBS: { [key: string]: any } = {
   selector: '[appPage]',
 })
 export abstract class PageDirective {
+
+  @Input() isVisible = false;
+
   abstract pageType: PageType;
   abstract prefix: string;
 
@@ -78,10 +84,11 @@ export abstract class PageDirective {
   detailsOpen = false;
 
   constructor(
-    protected ref: ElementRef
-  ) {
-    console.log(this.ref.nativeElement);
-  }
+    protected ref: ElementRef,
+    protected store$: Store<RootState>
+    ) {
+
+    }
 
   private setBackground(background: string) {
     this.background = background;

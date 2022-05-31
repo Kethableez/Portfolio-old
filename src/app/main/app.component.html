@@ -1,11 +1,24 @@
 <div [ngClass]="(theme$ | async) === 'dark' ? 'dark' : 'light'">
   <ktbz-navigation [currentPage]="visibleSection"></ktbz-navigation>
   <div class="scroll" #scroll (scroll)="onWindowScroll()">
-    <ktbz-landing #section></ktbz-landing>
-    <ktbz-about #section></ktbz-about>
-    <ktbz-education #section></ktbz-education>
-    <ktbz-experience #section></ktbz-experience>
-    <ktbz-projects #section></ktbz-projects>
-    <ktbz-contact #section></ktbz-contact>
+    <ktbz-landing
+      #section
+      [isVisible]="isVisible(PageType.LANDING)"
+    ></ktbz-landing>
+    <ktbz-about #section [isVisible]="isVisible(PageType.ABOUT)"></ktbz-about>
+    <ktbz-education
+      #section
+      [isVisible]="isVisible(PageType.EDUCATION)"
+    ></ktbz-education>
+    <ktbz-experience
+      #section
+      [isVisible]="isVisible(PageType.EXPERIENCE)"
+    ></ktbz-experience>
+    <ktbz-projects
+      #section
+      [isVisible]="isVisible(PageType.PROJECTS)"
+    ></ktbz-projects>
+    <ktbz-contact #section [isVisible]="isVisible(PageType.CONTACT)">
+    </ktbz-contact>
   </div>
 </div>

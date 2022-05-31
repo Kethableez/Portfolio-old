@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { PageType } from 'src/app/core/models/page-type.model';
+import { RootState } from 'src/app/core/store/root.state';
 import { PageDirective } from '../../components/page.directive';
 
 @Component({
@@ -12,10 +14,14 @@ export class AboutComponent extends PageDirective implements OnInit {
   pageType: PageType = PageType.ABOUT;
   prefix = 'about';
 
+  isVisible$ = this.store$.dispatch
+
   constructor(
-    protected override ref: ElementRef
+    protected override ref: ElementRef,
+    protected override store$: Store<RootState>
+
   ) {
-    super(ref);
+    super(ref, store$);
   }
 
   ngOnInit(): void {

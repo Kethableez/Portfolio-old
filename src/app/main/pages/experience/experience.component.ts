@@ -25,10 +25,11 @@ export class ExperienceComponent extends PageDirective implements OnInit, AfterC
   }));
 
   constructor(
-    private store$: Store<RootState>,
-    protected override ref: ElementRef
+    protected override ref: ElementRef,
+    protected override store$: Store<RootState>
+
   ) {
-    super(ref);
+    super(ref, store$);
     this.store$.dispatch(ExperienceActions.initExperience());
   }
 

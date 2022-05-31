@@ -29,10 +29,10 @@ export class ProjectsComponent extends PageDirective implements OnInit {
 
 
   constructor(
-    private store$: Store<RootState>,
-    protected override ref: ElementRef
+    protected override ref: ElementRef,
+    protected override store$: Store<RootState>
   ) {
-    super(ref);
+    super(ref, store$);
     this.store$.dispatch(ProjectActions.initProject());
   }
 

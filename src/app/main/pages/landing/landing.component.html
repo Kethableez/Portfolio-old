@@ -3,7 +3,7 @@
 
   <ktbz-blobs [blobs]="blobs"></ktbz-blobs>
   <div class="flexy column">
-    <ktbz-image [image]="'photo-1'"></ktbz-image>
+    <ktbz-image [@fadeSlide]="isVisible ? 'slideIn' : 'slideOut'" [image]="'photo-1'"></ktbz-image>
     <h1 class="is-64 is-secondary">{{ getLabel('header')  | translate }}</h1>
     <p class="is-32 is-white">{{ getLabel('subheader') | translate }}</p>
   </div>
