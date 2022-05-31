@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Output } from '@angular/core';
+import { Directive, EventEmitter, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[ktbzDetails]',
@@ -7,6 +7,8 @@ export abstract class DetailsDirective {
   abstract prefix: string;
 
   @Output() clear = new EventEmitter<void>();
+
+  @Input() contentVisible = false
 
   constructor() {}
 

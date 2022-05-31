@@ -5,7 +5,7 @@
     {{ getLabel("header") | translate }}
   </h1>
   <div class="flexy mx mt row stretch gap-10">
-    <div class="flexy column stretch whitespace">
+    <div class="flexy column stretch w-30">
       <div class="data">
         <h1 class="is-32 underline is-white mb">
           {{ getLabel("data") | translate }}
@@ -66,7 +66,9 @@
       </div>
 
       <div class="button gap">
-        <p class="is-32 is-white bold">CV</p>
+        <p class="is-32 is-white bold">
+          {{ getLabel('button.cv') | translate }}
+        </p>
         <i class="is-32 is-white fa-solid fa-file-pdf"></i>
       </div>
     </div>
@@ -76,26 +78,26 @@
         {{ getLabel("question") | translate }}
       </h1>
       <div class="control">
-        <label class="is-16 bold is-white">Imię</label>
+        <label class="is-16 bold is-white"> {{ getLabel('form.label.name') | translate }}</label>
         <!-- <input type="text" name="name" id="full-name" /> -->
         <input type="text" formControlName="name" />
       </div>
 
       <div class="control">
-        <label class="is-16 bold is-white">Email</label>
+        <label class="is-16 bold is-white"> {{ getLabel('form.label.email') | translate }} </label>
         <input type="text" formControlName="_replyto" />
       </div>
 
       <div class="control">
-        <label class="is-16 bold is-white">Wiadomość</label>
+        <label class="is-16 bold is-white">{{ getLabel('form.label.message') | translate }} </label>
         <textarea type="text" formControlName="message"></textarea>
       </div>
 
       <div class="button auto-margin" (click)="submit()">
-        <p class="is-32 is-white bold">Wyślij</p>
+        <p class="is-32 is-white bold">{{ getLabel('form.button.send') | translate}} </p>
       </div>
     </form>
 
-    <div class="whitespace"></div>
+    <div class="w-30"></div>
   </div>
 </div>

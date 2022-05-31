@@ -6,30 +6,26 @@
     <h1 class="ml is-48 underline is-white">
       {{ "projects.header" | translate }}
     </h1>
-    <div class="flexy row gap mx">
-      <div class="flexy column gap stretch">
+    <div class="relative h-70 flexy row gap stretch mx">
+      <ng-container *ngIf="selectedProject | async as project">
+        <div [@openDetails]="detailsOpen ? 'expanded' : 'collapsed'" class="details absolute">
+          <ktbz-project-details
+            [project]="project"
+            [contentVisible] = "detailsOpen"
+            (clear)="clear()"
+          ></ktbz-project-details>
+        </div>
+      </ng-container>
+
         <ng-container *ngFor="let project of projects | async">
           <ktbz-project-box
             [prefix]="prefix"
             [project]="project"
           ></ktbz-project-box>
         </ng-container>
-      </div>
-
-      <ng-container *ngIf="selectedProject | async as project; else message">
-        <div class="details">
-          <ktbz-project-details
-            [project]="project"
-            (clear)="clear()"
-          ></ktbz-project-details>
-        </div>
-      </ng-container>
-      <ng-template #message>
-        <div class="message">
-          <h1 class="is-32 is-white">Wybierz aby dowiedzieć się więcej</h1>
-        </div>
-      </ng-template>
     </div>
-    <div class="whitespace"></div>
+    <div class="whitespace">
+      <p class="is-12 is-white"> {{ getLabel('app.tip.label', true) | translate }} </p>
+    </div>
   </div>
 </div>

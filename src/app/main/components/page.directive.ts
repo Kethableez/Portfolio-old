@@ -75,6 +75,8 @@ export abstract class PageDirective {
 
   blobs: any[] = [];
 
+  detailsOpen = false;
+
   constructor(
     protected ref: ElementRef
   ) {
@@ -98,7 +100,8 @@ export abstract class PageDirective {
     this.setBlobs(blobNames);
   }
 
-  getLabel(key: string): string {
+  getLabel(key: string, isFull?: boolean): string {
+    if(isFull) return key;
     return [this.prefix, key].join('.');
   }
 

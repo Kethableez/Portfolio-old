@@ -100,7 +100,7 @@ import { ProjectDetailsComponent } from './main/components/project-details/proje
 export class AppModule {}
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/');
 }
 
 export function appInit(initService: InitService) {

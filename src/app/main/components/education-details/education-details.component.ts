@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Education } from 'src/app/core/models/education.model';
 import { DetailsDirective } from '../details.directive';
 

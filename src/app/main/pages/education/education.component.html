@@ -5,32 +5,27 @@
     <h1 class="ml is-48 underline is-white">
       {{ getLabel("header") | translate }}
     </h1>
-    <div class="flexy row gap mx">
-      <div class="flexy column gap stretch">
-        <ng-container *ngFor="let education of educations | async">
-          <ktbz-edu-box
-            [prefix]="prefix"
-            [education]="education"
-          ></ktbz-edu-box>
-        </ng-container>
-      </div>
 
-      <ng-container
-        *ngIf="selectedEducation | async as education; else message"
-      >
-        <div class="details">
-          <ktbz-education-details
-            [education]="education"
-            (clear)="clear()"
-          ></ktbz-education-details>
-        </div>
+    <div class="relative h-70 flexy row gap stretch mx">
+      <ng-container *ngIf="selectedEducation$ | async as education">
+      <div [@openDetails]="detailsOpen ? 'expanded' : 'collapsed'" class="details absolute">
+        <ktbz-education-details
+          [education]="education"
+          [contentVisible] = "detailsOpen"
+          (clear)="clear()"
+        ></ktbz-education-details>
+      </div>
+    </ng-container>
+
+      <ng-container *ngFor="let education of educations | async">
+        <ktbz-edu-box
+          [prefix]="prefix"
+          [education]="education"
+        ></ktbz-edu-box>
       </ng-container>
-      <ng-template #message>
-        <div class="message">
-          <h1 class="is-32 is-white">Wybierz aby dowiedzieć się więcej</h1>
-        </div>
-      </ng-template>
     </div>
+
     <div class="whitespace"></div>
+
   </div>
 </div>
