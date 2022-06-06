@@ -1,24 +1,4 @@
-<div [ngClass]="(theme$ | async) === 'dark' ? 'dark' : 'light'">
-  <ktbz-navigation [currentPage]="visibleSection"></ktbz-navigation>
-  <div class="scroll" #scroll (scroll)="onWindowScroll()">
-    <ktbz-landing
-      #section
-      [isVisible]="isVisible(PageType.LANDING)"
-    ></ktbz-landing>
-    <ktbz-about #section [isVisible]="isVisible(PageType.ABOUT)"></ktbz-about>
-    <ktbz-education
-      #section
-      [isVisible]="isVisible(PageType.EDUCATION)"
-    ></ktbz-education>
-    <ktbz-experience
-      #section
-      [isVisible]="isVisible(PageType.EXPERIENCE)"
-    ></ktbz-experience>
-    <ktbz-projects
-      #section
-      [isVisible]="isVisible(PageType.PROJECTS)"
-    ></ktbz-projects>
-    <ktbz-contact #section [isVisible]="isVisible(PageType.CONTACT)">
-    </ktbz-contact>
-  </div>
+<div class="page bg-mesh flex-row center gap-2">
+  <ktbz-terminal class="flex-col"></ktbz-terminal>
+  <ktbz-display *ngIf="isDisplayOpen$ | async as isOpen" class="flex-col"></ktbz-display>
 </div>

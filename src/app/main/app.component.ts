@@ -8,6 +8,7 @@ import {
 import { Store } from '@ngrx/store';
 import { PageType } from '../core/models/page-type.model';
 import { AppActions, getTheme } from '../core/store/app';
+import { isOpen } from '../core/store/display';
 import { RootState } from '../core/store/root.state';
 
 @Component({
@@ -20,6 +21,8 @@ export class AppComponent {
 
   visibleSection = PageType.LANDING;
   theme$ = this.store$.select(getTheme);
+
+  isDisplayOpen$ = this.store$.select(isOpen);
 
   @HostListener('window:scroll', ['$event']) onWindowScroll() {
     this.sections.forEach((section) => {

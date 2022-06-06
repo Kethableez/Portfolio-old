@@ -1,0 +1,25 @@
+<!-- <ktbz-progress-bar [value]="10" [max]="100" [displayPercent]="true"></ktbz-progress-bar> -->
+<router-outlet></router-outlet>
+<div class="content" *ngIf="commands$ | async as commands">
+  <ng-container *ngFor="let command of commands">
+    <div [ngSwitch]="command.commandType">
+      <div *ngSwitchCase="CommandType.LS">
+        <div class="flex-row wrap column-gap-1">
+          <p *ngFor="let route of command.content.routes" class="bold white link"> {{ route | translate }}</p>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="CommandType.HELP">
+        <p *ngFor="let content of command.content" class="bold white"> {{content.command | translate }} - {{content.description | translate }}</p>
+      </div>
+
+      <div *ngSwitchCase="CommandType.NOT_FOUND">
+        <p class="bold white"> {{ 'command.notfound' | translate: {command: command.content} }}</p>
+      </div>
+
+      <div *ngSwitchDefault>
+        <p class="bold white"> {{command.content}}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>

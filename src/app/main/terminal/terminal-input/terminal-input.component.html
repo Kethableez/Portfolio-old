@@ -1,0 +1,4 @@
+<form [formGroup]="inputForm" class="input flex-row gap-1" (keyup.enter)="runCommand($event)">
+  <span class="bold primary">></span>
+  <input class="bold white" type="text" formControlName="input">
+</form>

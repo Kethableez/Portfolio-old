@@ -1,0 +1,19 @@
+<div class="header flex-row stretch">
+  <div class="buttons flex-row gap-05 hidden">
+    <div class="button"></div>
+    <div class="button"></div>
+    <div class="button"></div>
+  </div>
+  <div class="title">Display</div>
+  <div class="buttons flex-row gap-05">
+    <div class="button btn-green"></div>
+    <div class="button btn-orange"></div>
+    <div class="button btn-red" (click)="close() "></div>
+  </div>
+</div>
+<div class="body flex-col">
+  <h1 *ngIf="type$ | async as type"> {{ type }}</h1>
+  <p *ngIf="object$ | async as object"> {{ object | json }} </p>
+</div>
+
+

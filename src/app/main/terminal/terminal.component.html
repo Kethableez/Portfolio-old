@@ -1,0 +1,17 @@
+<div class="header flex-row stretch">
+  <div class="buttons flex-row gap-05 hidden">
+    <div class="button"></div>
+    <div class="button"></div>
+    <div class="button"></div>
+  </div>
+  <div class="title">Kethableez.github.io/Portfolio</div>
+  <div class="buttons flex-row gap-05">
+    <div class="button btn-green"></div>
+    <div class="button btn-orange"></div>
+    <div class="button btn-red"></div>
+  </div>
+</div>
+<div class="body flex-col" #scrollable [scrollTop]="scrolltop">
+    <ktbz-terminal-content (newEntry)="updateScroll()"></ktbz-terminal-content>
+    <ktbz-terminal-input> #inputElement</ktbz-terminal-input>
+</div>
