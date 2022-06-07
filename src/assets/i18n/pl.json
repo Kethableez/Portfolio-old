@@ -1,6 +1,12 @@
 {
   "app.startup": "Uruchomienie systemu ...",
 
+  "about.header": "O mnie",
+  "about.paragraph.line1": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum quasi repellendus dolorum sequi. Explicabo dolores, illo nesciunt, dolorem, harum odit beatae vel sequi voluptates nemo omnis nobis eos ea laudantium.",
+  "about.paragraph.line2": "Doloribus, deserunt quos dolor fugiat officiis earum quae velit tenetur neque nemo optio ut? Iusto dolores ipsa exercitationem repudiandae, cumque ab enim quibusdam animi consequatur consequuntur rerum nemo iste alias?",
+  "about.paragraph.line3": "In possimus dolorem culpa dolores distinctio! Incidunt vitae unde tenetur porro, ipsa laborum non distinctio cupiditate ducimus exercitationem et soluta nam, nemo minus quam ipsam illo nisi blanditiis qui reprehenderit.",
+  "about.paragraph.line4": "Saepe consequuntur aliquid quae, eveniet velit vero possimus quod quibusdam enim quaerat quas maxime minus amet consequatur iste tempora repellat nisi dicta sint? Eligendi nisi minus dolores ducimus laboriosam maxime!",
+
   "landing.greeting": "Hej! 👋",
   "landing.im": "Jestem",
   "landing.fullname": "Amadeusz Janiszyn",
@@ -16,10 +22,13 @@
   "command.help.description": "Wyświetla pomoc dla podanej komendy",
   "command.help.usage": "help [komenda]",
 
-
   "command.ls": "LS",
   "command.ls.description": "Wyświetla listę plików w katalogu",
   "command.ls.usage": "ls",
+
+  "command.lang": "LANG",
+  "command.lang.description": "Wyświetla listę dostępnych języków lub zmienia język",
+  "command.lang.usage": "lang [język]",
 
   "command.clear": "CLEAR",
   "command.clear.description": "Czyści ekran",
@@ -31,9 +40,7 @@
 
   "command.display": "DISPLAY",
   "command.display.description": "Uruchamia aplikację display z podanymi parametrami",
-
-  "command.lang": "LANG",
-  "command.lang.description": "Ustawia język interfejsu",
+  "command.display.usage": "display [selektor] [nazwa]",
 
   "route.landing": "Start",
   "route.about": "O mnie",

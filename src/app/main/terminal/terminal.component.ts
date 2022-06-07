@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
+import { tap, timer } from 'rxjs';
 import { RootState } from 'src/app/core/store/root.state';
 import { getCommands } from 'src/app/core/store/terminal';
 
@@ -18,7 +18,14 @@ export class TerminalComponent implements OnInit {
     private store$: Store<RootState>
   ) { }
 
+  currVal = 0;
+
   ngOnInit(): void {
+    timer(0, 30).subscribe(() => {
+      if (this.currVal < 100) {
+        this.currVal++;
+      }
+    });
   }
 
   updateScroll() {

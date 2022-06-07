@@ -27,7 +27,8 @@ export class AppEffects {
         setTitle({ title: PageType.LANDING}),
         setLanguage({ language: Language.PL }),
         setTheme({ theme: Theme.DARK }),
-      ])
+      ]),
+      tap(() => this.translate.addLangs([Language.PL, Language.EN]))
     )
   );
 

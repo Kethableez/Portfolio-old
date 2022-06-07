@@ -8,11 +8,14 @@ import { help } from '../../helpers/help';
 import { parseRoute } from '../../helpers/parse-route';
 import { routes } from '../../helpers/routes';
 import { CommandType } from '../../models/command-type.model';
+import { openDisplay } from '../display/display.actions';
 import { RootState } from '../root.state';
 import {
   cdCommand,
   clearCommand,
+  displayCommand,
   helpCommand,
+  langCommand,
   lsCommand,
   notFoundCommand,
   runCommand,
@@ -34,11 +37,17 @@ export class TerminalEffects {
       map(({ command }) => {
         const args = command.split(' ');
         switch (args[0]) {
+          case 'display':
+            return displayCommand({ objectType: args[1], object: args[2] });
+
           case 'help':
             return helpCommand({ command: args[1] });
 
           case 'ls':
             return lsCommand();
+
+          case 'lang':
+            return langCommand({ lang: args[1] });
 
           case 'cd':
             return cdCommand({ directory: args[1] });
@@ -52,6 +61,15 @@ export class TerminalEffects {
       })
     )
   );
+
+  runDisplay$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(displayCommand),
+      map(({objectType, object }) => {
+        return openDisplay({ objectType: objectType, object: object });
+      })
+    )
+  )
 
   runHelp$ = createEffect(() =>
     this.actions$.pipe(
@@ -112,6 +130,24 @@ export class TerminalEffects {
     )
   );
 
+  runLang$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(langCommand),
+      map(({ lang }) => {
+        if (lang) {
+          this.translate.use(lang);
+        }
+
+        const content = lang ? 'lang.changed' : [this.translate.langs]
+        const payload = {
+          commandType: CommandType.LANG,
+          content: content,
+        };
+        return runCommandSuccess({ payload: payload });
+      })
+    )
+  )
+
   runNotFound$ = createEffect(() =>
     this.actions$.pipe(
       ofType(notFoundCommand),
@@ -127,3 +163,4 @@ export class TerminalEffects {
 
   // runNotFound$ = createEffect(() => this.actions$.pipe(ofType(), map()));
 }
+

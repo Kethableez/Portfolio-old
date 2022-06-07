@@ -25,6 +25,8 @@ import { DisplayComponent } from './main/display/display.component';
 import { DisplayStateModule } from './core/store/display';
 import { ProgressBarComponent } from './main/components/progress-bar/progress-bar.component';
 import { LandingComponent } from './main/pages/landing/landing.component';
+import { AboutComponent } from './main/pages/about/about.component';
+import { SkillsComponent } from './main/pages/skills/skills.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { LandingComponent } from './main/pages/landing/landing.component';
     TerminalInputComponent,
     DisplayComponent,
     ProgressBarComponent,
-    LandingComponent
+    LandingComponent,
+    AboutComponent,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,

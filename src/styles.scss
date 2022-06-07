@@ -64,6 +64,14 @@ html,
   flex-direction: column;
 }
 
+.flex-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 .hidden {
   opacity: 0;
   .button {
@@ -95,11 +103,38 @@ html,
   column-gap: 2rem;
 }
 
-ktbz-progress-bar {
-  margin: 1rem 0;
+h1 {
+  font-size: 1.5rem;
 }
 
-@media (min-width: 1280) {
+ktbz-progress-bar {
+  min-width: 10rem;
+  margin: 1rem 0;
+  // width: fit-content;
+}
+
+
+@media (min-width: 801px) and (max-width: 1200px) {
+  ktbz-terminal {
+    aspect-ratio: 4/3;
+    width: 80%;
+
+    .body {
+      background-color: $dark-grey;
+      height: 30rem;
+    }
+  }
+
+  ktbz-display {
+    width: 50%;
+    height: calc(100vw * 0.8 / 4 * 3);
+    .body {
+      background-color: $text-white;
+    }
+  }
+}
+
+@media (min-width: 1201px) {
   ktbz-terminal {
     aspect-ratio: 4/3;
     width: 50%;
@@ -200,27 +235,117 @@ strong {
   color: $primary;
 }
 
-@media (max-width: 800px) and (min-width: 320px) {
+@media (max-width: 800px) and (min-width: 280px) and (orientation: portrait) {
   p,
-  .title {
+  .title,
+  input,
+  span {
     font-size: 0.7rem;
   }
-  ktbz-terminal {
-    width: 100vh;
+
+
+  .flex-page {
+    flex-direction: column;
+    gap: 0;
     height: 100vh;
-    .button {
-      visibility: hidden !important;
+  }
+
+  ktbz-terminal {
+    flex-grow: 1;
+    .stretch {
+      justify-content: center;
     }
 
+    .buttons {
+      visibility: hidden !important;
+      display: none;
+    }
     .body {
       background-color: $dark-grey;
-      height: 30rem;
+      height: 20px;
     }
   }
 
   ktbz-display {
+    flex-grow: 3;
     .body {
       background-color: $text-white;
     }
   }
+
+  ktbz-terminal,
+  ktbz-display {
+    width: 100%;
+    border: 0px;
+    border-radius: 0px;
+
+    .header {
+      border-radius: 0px;
+    }
+
+    .body {
+
+      border-radius: 0px;
+
+    }
+  }
 }
+
+@media (max-width: 800px) and (min-width: 280px) and (orientation: landscape) {
+  p,
+  .title,
+  input,
+  span {
+    font-size: 0.7rem;
+  }
+
+
+  .flex-page {
+    flex-direction: row;
+    gap: 0;
+    height: 100vh;
+  }
+
+  ktbz-terminal {
+    flex-grow: 1;
+    height: 100%;
+    .stretch {
+      justify-content: center;
+    }
+
+    .buttons {
+      visibility: hidden !important;
+      display: none;
+    }
+    .body {
+      background-color: $dark-grey;
+      height: 20px;
+    }
+  }
+
+  ktbz-display {
+    flex-grow: 1;
+    height: 100%;
+
+    .body {
+      background-color: $text-white;
+    }
+  }
+
+  ktbz-terminal,
+  ktbz-display {
+    border: 0px;
+    border-radius: 0px;
+
+    .header {
+      border-radius: 0px;
+    }
+
+    .body {
+
+      border-radius: 0px;
+
+    }
+  }
+}
+

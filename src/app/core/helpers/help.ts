@@ -7,9 +7,19 @@ export const help: HelpCommand[] = [
     usage: 'command.help.usage',
   },
   {
+    command: 'display',
+    description: 'command.display.description',
+    usage: 'command.display.usage',
+  },
+  {
     command: 'ls',
     description: 'command.ls.description',
     usage: 'command.ls.usage',
+  },
+  {
+    command: 'lang',
+    description: 'command.lang.description',
+    usage: 'command.lang.usage',
   },
   {
     command: 'cd',

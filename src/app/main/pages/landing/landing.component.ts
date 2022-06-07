@@ -10,14 +10,8 @@ export class LandingComponent implements OnInit {
 
   constructor() { }
 
-  currVal = 0;
-
   ngOnInit(): void {
-    timer(0, 30).subscribe(() => {
-      if (this.currVal < 100) {
-        this.currVal++;
-      }
-    });
+
   }
 
 }
