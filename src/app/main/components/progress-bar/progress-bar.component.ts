@@ -11,6 +11,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   @Input() max: number = 10;
   @Input() displayValue: boolean = false;
   @Input() displayType: string = 'percent';
+  @Input() colored: boolean = false;
 
   constructor(
     private ref: ElementRef
@@ -22,7 +23,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
   private charUnfliied!: number;
 
   ngOnInit(): void {
-    this.progressWidth = this.ref.nativeElement.offsetWidth;
+    this.progressWidth = this.ref.nativeElement.offsetWidth * 0.9;
     this.charCount = Math.floor(( this.progressWidth) / 10);
     this.charFilled = Math.floor(this.charCount * this.value / this.max);
     this.charUnfliied = this.charCount - this.charFilled;

@@ -17,5 +17,5 @@ export const setTheme = createAction(
 
 export const setTitle = createAction(
   '[App] Set Title',
-  props<{ title: PageType }>()
+  props<{ title: PageType | string }>()
 );

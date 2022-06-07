@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,14 +18,14 @@ export class AppEffects {
     private store$: Store<RootState>,
     private actions$: Actions,
     private translate: TranslateService,
-    private title: Title
+    private title: Title,
+    private router: Router
   ) {}
 
   initApp$ = createEffect(() =>
     this.actions$.pipe(
       ofType(initApp),
       concatMap(() => [
-        setTitle({ title: PageType.LANDING}),
         setLanguage({ language: Language.PL }),
         setTheme({ theme: Theme.DARK }),
       ]),
@@ -36,8 +37,7 @@ export class AppEffects {
     this.actions$.pipe(
       ofType(setLanguage),
       switchMap((action) => this.translate.use(action.language)),
-      withLatestFrom(this.store$.select(getTitle)),
-      map(([, title]) => setTitle({ title: title }))
+      map(() => setTitle({ title: this.router.url }))
     )
   );
 
@@ -46,8 +46,7 @@ export class AppEffects {
       this.actions$.pipe(
         ofType(setTitle),
         switchMap((action) => {
-          const title = `app.title.${action.title}`;
-          console.log(this.translate.currentLang);
+          const title = `~/Portfolio${action.title}`;
           return this.translate.get(title);
         }),
         tap((title) => this.title.setTitle(title))

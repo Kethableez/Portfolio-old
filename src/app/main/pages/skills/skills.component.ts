@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { skills } from 'src/app/core/helpers/skills';
 
 @Component({
   selector: 'ktbz-skills',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
+  skills = skills;
+
   constructor() { }
+
 
   ngOnInit(): void {
   }

@@ -1,0 +1,15 @@
+<h1><strong>{{ 'education.header' | translate }}</strong></h1>
+<ng-container *ngFor="let education of educations; let i = index">
+  <div class="flex-row gap-1">
+    <span class="white bold">{{ i + 1}}.</span>
+    <div>
+      <p class="white"> {{ education.field | translate}}, <span class="italic" *ngIf="education.specialty">{{ education.specialty | translate}}</span> </p>
+      <p class="white bold"> {{ education.title | translate}} </p>
+      <p class="white"> {{ education.school | translate}} </p>
+      <p class="white italic"> {{ education.start | translate}} - {{ education.end | translate }} </p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+</ng-container>
+
+<p class="white italic"> {{ 'app.hint' | translate: { command: hint} }}</p>

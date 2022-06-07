@@ -1,10 +1,10 @@
-<div class="header flex-row stretch">
+<div class="header flex-row header-stretch">
   <div class="buttons flex-row gap-05 hidden">
     <div class="button"></div>
     <div class="button"></div>
     <div class="button"></div>
   </div>
-  <div class="title">Kethableez.github.io/Portfolio</div>
+  <div class="title">{{'app.header' | translate}}</div>
   <div class="buttons flex-row gap-05">
     <div class="button btn-green"></div>
     <div class="button btn-orange"></div>
@@ -12,8 +12,6 @@
   </div>
 </div>
 <div class="body flex-col" #scrollable [scrollTop]="scrolltop">
-  <p class="white">{{ "app.startup" | translate }}</p>
-  <ktbz-progress-bar [value]="currVal" [max]="100" [displayValue]="true"></ktbz-progress-bar>
-  <ktbz-terminal-content *ngIf="currVal === 100" (newEntry)="updateScroll()"></ktbz-terminal-content>
-  <ktbz-terminal-input *ngIf="currVal === 100"> #inputElement</ktbz-terminal-input>
+  <ktbz-terminal-content (newEntry)="updateScroll()"></ktbz-terminal-content>
+  <ktbz-terminal-input> #inputElement</ktbz-terminal-input>
 </div>

@@ -12,5 +12,5 @@ export const getTheme = createSelector(app, (state: App.State) => state.theme);
 export const getTitle = createSelector(app, (state: App.State) => state.title);
 export const isPageVisible = (page: PageType) => createSelector(
   getTitle,
-  (title: PageType) => title === page
+  (title) => title === page
 );

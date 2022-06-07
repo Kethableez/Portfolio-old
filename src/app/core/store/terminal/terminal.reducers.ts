@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { CommandType } from '../../models/command-type.model';
 import { Command } from '../../models/command.model';
 import {
+  changeInputType,
   clearCommand,
   runCommand,
   runCommandSuccess,
@@ -9,10 +10,12 @@ import {
 
 export interface State {
   commands: Command[];
+  inputType: 'command' | 'message';
 }
 
 export const initialState: State = {
   commands: [],
+  inputType: 'command',
 };
 
 export const terminalKey = 'terminal';
@@ -37,6 +40,10 @@ export const terminalReducer = createReducer(
         ...payload,
       },
     ],
+  })),
+  on(changeInputType, (state, { inputType }) => ({
+    ...state,
+    inputType: inputType,
   })),
   on(clearCommand, (state) => ({
     ...state,

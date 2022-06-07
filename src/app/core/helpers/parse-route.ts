@@ -4,7 +4,8 @@ export function parseRoute(rawValue: string): string {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
   switch (value) {
-    case 'portfolio':
+    case 'start':
+    case 'landing':
       return 'landing';
 
     case 'o_mnie':

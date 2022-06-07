@@ -18,14 +18,8 @@ export class TerminalComponent implements OnInit {
     private store$: Store<RootState>
   ) { }
 
-  currVal = 0;
-
   ngOnInit(): void {
-    timer(0, 30).subscribe(() => {
-      if (this.currVal < 100) {
-        this.currVal++;
-      }
-    });
+
   }
 
   updateScroll() {

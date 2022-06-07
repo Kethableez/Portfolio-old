@@ -10,11 +10,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { EducationStateModule } from './core/store/education';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { ExperienceStateModule } from './core/store/experience';
-import { ProjectStateModule } from './core/store/projects';
 import { AppStateModule } from './core/store/app/app-state.module';
 import { InitService } from './core/services/init.service';
 import { TerminalComponent } from './main/terminal/terminal.component';
@@ -27,6 +24,11 @@ import { ProgressBarComponent } from './main/components/progress-bar/progress-ba
 import { LandingComponent } from './main/pages/landing/landing.component';
 import { AboutComponent } from './main/pages/about/about.component';
 import { SkillsComponent } from './main/pages/skills/skills.component';
+import { EducationComponent } from './main/pages/education/education.component';
+import { ExperienceComponent } from './main/pages/experience/experience.component';
+import { ProjectsComponent } from './main/pages/projects/projects.component';
+import { InterestComponent } from './main/pages/interest/interest.component';
+import { ContactComponent } from './main/pages/contact/contact.component';
 
 
 @NgModule({
@@ -39,7 +41,12 @@ import { SkillsComponent } from './main/pages/skills/skills.component';
     ProgressBarComponent,
     LandingComponent,
     AboutComponent,
-    SkillsComponent
+    SkillsComponent,
+    EducationComponent,
+    ExperienceComponent,
+    ProjectsComponent,
+    InterestComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +54,6 @@ import { SkillsComponent } from './main/pages/skills/skills.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    EducationStateModule,
-    ExperienceStateModule,
-    ProjectStateModule,
     AppStateModule,
     TerminalStateModule,
     DisplayStateModule,

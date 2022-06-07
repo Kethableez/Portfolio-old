@@ -31,4 +31,14 @@ export const help: HelpCommand[] = [
     description: 'command.clear.description',
     usage: 'command.clear.usage',
   },
+  {
+    command: 'msg',
+    description: 'command.msg.description',
+    usage: 'command.msg.usage',
+  },
+  {
+    command: 'wget',
+    description: 'command.wget.description',
+    usage: 'command.wget.usage',
+  }
 ];

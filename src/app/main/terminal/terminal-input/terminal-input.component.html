@@ -1,4 +1,17 @@
-<form [formGroup]="inputForm" class="input flex-row gap-1" (keyup.enter)="runCommand($event)">
-  <span class="bold primary">></span>
-  <input class="bold white" type="text" formControlName="input">
-</form>
+<ng-container *ngIf="inputType$ | async as inputType">
+  <div [ngSwitch]="inputType">
+    <div *ngSwitchCase="'message'">
+      <form [formGroup]="contactForm" class="input flex-row gap-1" (keyup.enter)="nextStep(currentStep)">
+        <span class="bold primary">></span>
+        <span *ngIf="currentStep !== 'send'" class="bold white"> {{ currentStep }}:</span>
+        <input *ngIf="currentStep !== 'send'" class="bold white" type="text" formControlName="input">
+      </form>
+    </div>
+    <div *ngSwitchDefault>
+      <form [formGroup]="inputForm" class="input flex-row gap-1" (keyup.enter)="runCommand($event)">
+        <span class="bold primary">></span>
+        <input class="bold white" type="text" formControlName="input">
+      </form>
+    </div>
+  </div>
+</ng-container>

@@ -8,15 +8,18 @@ import { help } from '../../helpers/help';
 import { parseRoute } from '../../helpers/parse-route';
 import { routes } from '../../helpers/routes';
 import { CommandType } from '../../models/command-type.model';
+import { setTitle } from '../app/app.actions';
 import { openDisplay } from '../display/display.actions';
 import { RootState } from '../root.state';
 import {
   cdCommand,
+  changeInputType,
   clearCommand,
   displayCommand,
   helpCommand,
   langCommand,
   lsCommand,
+  msgCommand,
   notFoundCommand,
   runCommand,
   runCommandSuccess,
@@ -43,6 +46,9 @@ export class TerminalEffects {
           case 'help':
             return helpCommand({ command: args[1] });
 
+          case 'msg':
+            return msgCommand();
+
           case 'ls':
             return lsCommand();
 
@@ -62,6 +68,13 @@ export class TerminalEffects {
     )
   );
 
+  msgCommand$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(msgCommand),
+      map(() => changeInputType({ inputType: 'message' })
+    )
+  ));
+
   runDisplay$ = createEffect(() =>
     this.actions$.pipe(
       ofType(displayCommand),
@@ -75,9 +88,12 @@ export class TerminalEffects {
     this.actions$.pipe(
       ofType(helpCommand),
       map(({ command }) => {
-        const content = command
+        const temp = command
           ? help.filter((h) => h.command === command)
           : help;
+
+        // Todo better way to do this
+        const content = temp.length !== 0 ? temp : ['This command is not found: ' + command];
 
         const payload = {
           commandType: CommandType.HELP,
@@ -105,6 +121,7 @@ export class TerminalEffects {
           }
 
           this.router.navigateByUrl(`/${path}`);
+          this.store$.dispatch(setTitle({ title: `/${path}` }));
           return clearCommand();
         }
 
@@ -138,7 +155,7 @@ export class TerminalEffects {
           this.translate.use(lang);
         }
 
-        const content = lang ? 'lang.changed' : [this.translate.langs]
+        const content = lang ? this.translate.instant('lang.changed') : [this.translate.langs]
         const payload = {
           commandType: CommandType.LANG,
           content: content,

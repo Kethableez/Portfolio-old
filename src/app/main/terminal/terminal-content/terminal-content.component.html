@@ -14,18 +14,22 @@
       <div *ngSwitchCase="CommandType.HELP">
         <ng-container *ngIf="command.content.length === 1; else commands">
           <div *ngIf="command.content[0] as content">
-            <p class="bold white">
-              {{ content.command }} - {{ content.description | translate }}
-            </p>
-            <p class="bold white">{{ "help.usage" | translate }}</p>
-            <p class="bold white">{{ content.usage | translate }}</p>
+            <div class="flex-row">
+              <p class="white fixed-width-small"> {{ content.command | translate }} </p>
+              <span class="white"> - {{ content.description | translate }} </span>
+            </div>
+
+            <div class="flex-row">
+              <p class="white fixed-width-small"> {{ "help.usage" | translate }} </p>
+              <span class="white"> {{ content.usage | translate }} </span>
+            </div>
           </div>
         </ng-container>
         <ng-template #commands>
-          <p *ngFor="let content of command.content" class="bold white">
-            {{ content.command | translate }} -
-            {{ content.description | translate }}
-          </p>
+          <div *ngFor="let content of command.content" class="flex-row">
+            <p class="white fixed-width-small"> {{ content.command | translate }} </p>
+            <span class="white"> - {{ content.description | translate }} </span>
+          </div>
         </ng-template>
       </div>
 

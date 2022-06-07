@@ -1,0 +1,14 @@
+<h1><strong>{{ 'project.header' | translate }}</strong></h1>
+<ng-container *ngFor="let project of projects; let i = index">
+  <div class="flex-row gap-1">
+    <span class="white bold">{{ i + 1}}.</span>
+    <div>
+      <p class="white bold"> {{ project.name | translate}} </p>
+      <p class="white"> {{ project.type | translate}} </p>
+      <p class="white link"> {{ project.link }} </p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+</ng-container>
+
+<p class="white italic"> {{ 'app.hint' | translate: { command: hint} }}</p>

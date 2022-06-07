@@ -9,6 +9,11 @@ export const runCommand = createAction(
   props<{ command: string }>()
 );
 
+export const changeInputType = createAction(
+  '[Terminal] Change Input Type',
+  props<{ inputType: 'command' | 'message' }>()
+);
+
 export const runCommandSuccess = createAction(
   '[Terminal] Run Command Success',
   props<{ payload: Command }>()
@@ -22,6 +27,10 @@ export const helpCommand = createAction(
 export const cdCommand = createAction(
   '[Terminal] Run Cd Command',
   props<{ directory: string }>()
+);
+
+export const msgCommand = createAction(
+  '[Terminal] Run Msg Command',
 );
 
 export const displayCommand = createAction(

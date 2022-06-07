@@ -6,4 +6,6 @@ export enum CommandType {
   LS = 'ls',
   LANG = 'lang',
   NOT_FOUND = 'notFound',
+  MSG = 'msg',
+  WGET = 'wget',
 }

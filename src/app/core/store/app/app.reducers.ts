@@ -7,7 +7,7 @@ import { setLanguage, setTheme, setTitle } from './app.actions';
 export interface State {
   language: Language;
   theme: Theme;
-  title: PageType;
+  title: PageType | string;
 }
 
 export const initialState: State = {

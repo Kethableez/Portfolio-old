@@ -1,3 +1,9 @@
 <div class="fit flexy-row white">
-  <span class="is-13">[{{ progressBar.filled}}{{ progressBar.notFilled}}]</span> <span *ngIf="progressBar.value"> {{ progressBar.value }} </span>
+  <ng-container *ngIf="colored; else regular">
+    <span class="is-13">[<strong>{{ progressBar.filled}}</strong>{{ progressBar.notFilled}}]</span> <span *ngIf="progressBar.value"> {{ progressBar.value }} </span>
+  </ng-container>
+  <ng-template #regular>
+    <span class="is-13">[{{ progressBar.filled}}{{ progressBar.notFilled}}]</span> <span *ngIf="progressBar.value"> {{ progressBar.value }} </span>
+  </ng-template>
+
 </div>

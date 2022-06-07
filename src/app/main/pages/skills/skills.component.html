@@ -1,1 +1,7 @@
-<p>skills works!</p>
+<h1><strong>{{ 'skills.header' | translate }}</strong></h1>
+<ng-container *ngFor="let skill of skills">
+  <div class="flex-row">
+    <p class="white fixed-width"> {{skill.name | translate}} </p>
+    <ktbz-progress-bar [value]="skill.level" [displayType]="'value'" [displayValue]="true" [colored]="true"></ktbz-progress-bar>
+  </div>
+</ng-container>
