@@ -5,20 +5,44 @@
     <div [ngSwitch]="command.commandType">
       <div *ngSwitchCase="CommandType.LS">
         <div class="flex-row wrap column-gap-1">
-          <p *ngFor="let route of command.content.routes" class="bold white link"> {{ route | translate }}</p>
+          <p *ngFor="let route of command.content" class="bold white link">
+            {{ route | translate }}
+          </p>
         </div>
       </div>
 
       <div *ngSwitchCase="CommandType.HELP">
-        <p *ngFor="let content of command.content" class="bold white"> {{content.command | translate }} - {{content.description | translate }}</p>
+        <ng-container *ngIf="command.content.length === 1; else commands">
+          <div *ngIf="command.content[0] as content">
+            <p class="bold white">
+              {{ content.command }} - {{ content.description | translate }}
+            </p>
+            <p class="bold white">{{ "help.usage" | translate }}</p>
+            <p class="bold white">{{ content.usage | translate }}</p>
+          </div>
+        </ng-container>
+        <ng-template #commands>
+          <p *ngFor="let content of command.content" class="bold white">
+            {{ content.command | translate }} -
+            {{ content.description | translate }}
+          </p>
+        </ng-template>
+      </div>
+
+      <div *ngSwitchCase="CommandType.CD">
+        <p class="bold white">
+          {{ command.content }}
+        </p>
       </div>
 
       <div *ngSwitchCase="CommandType.NOT_FOUND">
-        <p class="bold white"> {{ 'command.notfound' | translate: {command: command.content} }}</p>
+        <p class="bold white">
+          {{ "command.notfound" | translate: { command: command.content } }}
+        </p>
       </div>
 
       <div *ngSwitchDefault>
-        <p class="bold white"> {{command.content}}</p>
+        <p class="bold white">{{ command.content }}</p>
       </div>
     </div>
   </ng-container>

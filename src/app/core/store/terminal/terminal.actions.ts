@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { HelpCommand } from '../../models/help-command.model';
+import { CommandType } from '../../models/command-type.model';
+import { Command } from '../../models/command.model';
 import { LsCommand } from '../../models/ls-command.model';
 
 export const runCommand = createAction(
@@ -7,21 +8,26 @@ export const runCommand = createAction(
   props<{ command: string }>()
 );
 
-export const runNotFoundCommand = createAction(
+export const runCommandSuccess = createAction(
+  '[Terminal] Run Command Success',
+  props<{ payload: Command }>()
+);
+
+export const helpCommand = createAction(
+  '[Terminal] Run Help Command',
+  props<{ command?: string }>()
+);
+
+export const cdCommand = createAction(
+  '[Terminal] Run Cd Command',
+  props<{ directory: string }>()
+);
+
+export const lsCommand = createAction('[Terminal] Run Ls Command');
+
+export const notFoundCommand = createAction(
   '[Terminal] Run Not Found Command',
   props<{ command: string }>()
 );
 
-export const runHelp = createAction(
-  '[Terminal] Run Help',
-  props<{ commands: HelpCommand[] }>()
-);
-
-export const runLs = createAction(
-  '[Terminal] Run Ls',
-  props<{ commands: LsCommand }>()
-);
-
-export const clearTerminal = createAction(
-  '[Terminal] Clear Terminal'
-);
+export const clearCommand = createAction('[Terminal] Run Clear Command');

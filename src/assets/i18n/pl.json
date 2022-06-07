@@ -9,16 +9,29 @@
   "landing.run.description": "aby zobaczyć dostepne komendy",
 
   "command.notfound": "Nie znaleziono komendy '{{command}}'",
+  "command.dir.notfound": "System nie może odnaleźć ścieżki: {{directory}}",
+  "help.usage": "Użycie:",
+
   "command.help": "HELP",
-  "command.help.description": "Wyświetla listę dostępnych komend",
+  "command.help.description": "Wyświetla pomoc dla podanej komendy",
+  "command.help.usage": "help [komenda]",
+
+
   "command.ls": "LS",
-  "command.ls.description": "Wyświetla listę dostępnych ścieżek",
+  "command.ls.description": "Wyświetla listę plików w katalogu",
+  "command.ls.usage": "ls",
+
   "command.clear": "CLEAR",
   "command.clear.description": "Czyści ekran",
+  "command.clear.usage": "clear",
+
+  "command.cd": "CD",
+  "command.cd.description": "Wyświetla aktualną lokalizację lub przechodzi do podanej lokalizacji",
+  "command.cd.usage": "cd [..]",
+
   "command.display": "DISPLAY",
   "command.display.description": "Uruchamia aplikację display z podanymi parametrami",
-  "command.cd": "CD",
-  "command.cd.description": "Przechodzi do podanej ścieżki",
+
   "command.lang": "LANG",
   "command.lang.description": "Ustawia język interfejsu",
 

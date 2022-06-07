@@ -1,10 +1,18 @@
-<p class="white"> {{'app.startup' | translate }}</p>
-<ktbz-progress-bar [value]="currVal" [max]="100" [displayValue]="true"></ktbz-progress-bar>
-<ng-container *ngIf="currVal === 100">
-<p class="white"> {{ 'landing.greeting' | translate }} </p>
-<p class="white"> {{ 'landing.im' | translate }} <strong>{{ 'landing.fullname' | translate }}</strong>, {{ 'landing.fullstack' | translate }}.</p>
+<p class="white">{{ "app.startup" | translate }}</p>
+<!-- <ktbz-progress-bar [value]="currVal" [max]="100" [displayValue]="true"></ktbz-progress-bar> -->
+<ng-container>
+  <p class="white">{{ "landing.greeting" | translate }}</p>
+  <p class="white">
+    {{ "landing.im" | translate }}
+    <strong>{{ "landing.fullname" | translate }}</strong
+    >, {{ "landing.fullstack" | translate }}.
+  </p>
 
-<img src="assets/images/img1.png" alt="">
+  <img src="assets/images/img1.png" alt="" />
 
-<p class="white"> {{ 'landing.run' | translate }} <strong class="italic"> {{ 'command.help' | translate }} </strong> {{ 'landing.run.description' | translate }} </p>
+  <p class="white">
+    {{ "landing.run" | translate }}
+    <strong class="italic"> {{ "command.help" | translate }} </strong>
+    {{ "landing.run.description" | translate }}
+  </p>
 </ng-container>
