@@ -31,21 +31,6 @@ export class TerminalInputComponent implements OnInit {
     const command: string = this.inputForm.controls['input'].value;
     this.store$.dispatch(TerminalActions.runCommand({ command: command }));
 
-    // if (command.toLowerCase() === 'clear') this.store$.dispatch(TerminalActions.clearTerminal());
-
-    // else if (command.startsWith('display')) this.store$.dispatch(DisplayActions.openDisplay({ objectType: command.split(' ')[1], object: { name: command.split(' ')[2] } }));
-
-    // // else if (command.startsWith('help')) this.store$.dispatch(TerminalActions.runHelp({ commands: this.help }));
-
-    // else if (command.startsWith('ls')) this.store$.dispatch(TerminalActions.runLs({ commands: this.ls }));
-
-    // else if (command.startsWith('lang')) {
-    //   this.store$.dispatch(AppActions.setLanguage({ language: this.parseLang(command) as Language}));
-    //   this.store$.dispatch(TerminalActions.runCommand({ command: 'Changed language to ' + this.parseLang(command) }));
-    // }
-
-    // else this.store$.dispatch(TerminalActions.runNotFoundCommand({ command: command }));
-
     this.inputForm.controls['input'].setValue('');
     this.ref.nativeElement.scrollTop = this.ref.nativeElement.scrollHeight;
   }

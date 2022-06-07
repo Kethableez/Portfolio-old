@@ -35,7 +35,7 @@ export class TerminalEffects {
     this.actions$.pipe(
       ofType(runCommand),
       map(({ command }) => {
-        const args = command.split(' ');
+        const args = command.split(' ').map(arg => arg.toLowerCase())
         switch (args[0]) {
           case 'display':
             return displayCommand({ objectType: args[1], object: args[2] });
