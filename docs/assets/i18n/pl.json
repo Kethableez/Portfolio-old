@@ -1,11 +1,79 @@
 {
   "app.startup": "Uruchomienie systemu ...",
+  "app.header": "kethableez.github.io/Portfolio",
+  "app.hint": "Podpowiedź: Wpisz '{{command}}' aby poznać szczegóły.",
+
+  "lang.changed": "Zmieniono język",
 
   "about.header": "O mnie",
   "about.paragraph.line1": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum quasi repellendus dolorum sequi. Explicabo dolores, illo nesciunt, dolorem, harum odit beatae vel sequi voluptates nemo omnis nobis eos ea laudantium.",
   "about.paragraph.line2": "Doloribus, deserunt quos dolor fugiat officiis earum quae velit tenetur neque nemo optio ut? Iusto dolores ipsa exercitationem repudiandae, cumque ab enim quibusdam animi consequatur consequuntur rerum nemo iste alias?",
   "about.paragraph.line3": "In possimus dolorem culpa dolores distinctio! Incidunt vitae unde tenetur porro, ipsa laborum non distinctio cupiditate ducimus exercitationem et soluta nam, nemo minus quam ipsam illo nisi blanditiis qui reprehenderit.",
   "about.paragraph.line4": "Saepe consequuntur aliquid quae, eveniet velit vero possimus quod quibusdam enim quaerat quas maxime minus amet consequatur iste tempora repellat nisi dicta sint? Eligendi nisi minus dolores ducimus laboriosam maxime!",
+
+  "education.header": "Edukacja",
+
+  "field.technician": "Mechatronika",
+  "title.technician": "Technik",
+  "start.technician": "Wrzesień 2014",
+  "end.technician": "Czerwiec 2018",
+  "description.technician": "",
+  "achievement.technician.1": "",
+  "achievement.technician.2": "",
+  "achievement.technician.3": "",
+
+  "field.engineer": "Automatyka i Robotyka",
+  "title.engineer": "Inżynier",
+  "specialty.engineer": "Przemysł 4.0",
+  "start.engineer": "Październik 2018",
+  "end.engineer": "Luty 2022",
+  "description.engineer": "",
+  "achievement.engineer.1": "",
+  "achievement.engineer.2": "",
+  "achievement.engineer.3": "",
+
+  "field.master": "Informatyka Techniczna",
+  "title.master": "Magister",
+  "specialty.master": "Inżynieria systemów informatycznych",
+  "start.master": "Marzec 2022",
+  "end.master": "Obecnie",
+  "description.master": "",
+  "achievement.master.1": "",
+  "achievement.master.2": "",
+  "achievement.master.3": "",
+
+  "project.header": "Projekty",
+
+  "name.tuziemiec": "Tuziemiec",
+  "type.tuziemiec": "KPZ",
+  "description.tuziemiec": "",
+
+  "name.walker": "Walker",
+  "type.walker": "Praca inżynierska",
+  "description.walker": "",
+
+  "name.anytravel": "AnyTravel",
+  "type.anytravel": "ZWiG",
+  "description.anytravel": "",
+
+
+  "school.highschool": "ZSE nr. 5 w Opolu 'Elektryczniak'",
+  "school.university": "Politechnika Wrocławska",
+
+  "experience.header": "Doświadczenie",
+  "experience.technologies": "Technologie:",
+
+  "company.comarch": "Comarch",
+  "position.comarch": "Frontend Developer",
+  "description.comarch": "",
+  "start.comarch": "Czerwiec 2021",
+  "end.comarch": "Obecnie",
+
+  "company.fiverr": "Fiverr",
+  "position.fiverr": "Freelance Developer",
+  "description.fiverr": "",
+  "start.fiverr": "Marzec 2022",
+  "end.fiverr": "Obecnie",
 
   "landing.greeting": "Hej! 👋",
   "landing.im": "Jestem",
@@ -38,9 +106,37 @@
   "command.cd.description": "Wyświetla aktualną lokalizację lub przechodzi do podanej lokalizacji",
   "command.cd.usage": "cd [..]",
 
+  "command.msg": "MSG",
+  "command.msg.description": "Uruchamia program do wysyłania wiadomości",
+  "command.msg.usage": "msg",
+
+  "command.wget": "WGET",
+  "command.wget.description": "Pobiera podany plik",
+  "command.wget.usage": "wget [file]",
+
   "command.display": "DISPLAY",
   "command.display.description": "Uruchamia aplikację display z podanymi parametrami",
   "command.display.usage": "display [selektor] [nazwa]",
+
+  "skills.header": "Umiejętności",
+  "technology.angular": "Angular",
+  "technology.nodejs": "NodeJS",
+  "technology.nestjs": "NestJS",
+  "technology.springboot": "Spring Boot",
+  "technology.mongodb": "MongoDB",
+  "technology.mysql": "MySQL",
+  "technology.html": "HTML",
+  "technology.css": "CSS",
+  "technology.scss": "SCSS",
+  "technology.git": "GIT",
+  "technology.docker": "Docker",
+  "technology.adobexd": "Adobe XD",
+  "technology.figma": "Figma",
+  "technology.typescript": "TypeScript",
+  "technology.java": "Java",
+  "technology.cpp": "C++",
+  "technology.python": "Python",
+  "lang.english": "Angielski",
 
   "route.landing": "Start",
   "route.about": "O mnie",
@@ -48,5 +144,11 @@
   "route.education": "Edukacja",
   "route.experience": "Doświadczenie",
   "route.projects": "Projekty",
-  "route.contact": "Kontakt"
+  "route.contact": "Kontakt",
+
+  "contact.data": "Moje dane:",
+  "contact.social": "Social media:",
+
+  "contact.help.msg": "Wpisz 'msg', aby wysłać mi wiadomość",
+  "contact.help.wget": "Wpisz 'wget cv', aby pobrać moje CV"
 }
