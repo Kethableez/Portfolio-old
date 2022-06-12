@@ -18,6 +18,11 @@ import { RootState } from '../core/store/root.state';
 })
 export class AppComponent {
   isDisplayOpen$ = this.store$.select(isOpen);
+  modalParts = {
+    header: 'modal.info',
+    message: 'modal.message',
+    buttons: ['modal.ok'],
+  }
 
   constructor(private store$: Store<RootState>) {}
 }

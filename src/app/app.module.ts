@@ -14,11 +14,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppStateModule } from './core/store/app/app-state.module';
 import { InitService } from './core/services/init.service';
-import { TerminalComponent } from './main/terminal/terminal.component';
-import { TerminalContentComponent } from './main/terminal/terminal-content/terminal-content.component';
-import { TerminalInputComponent } from './main/terminal/terminal-input/terminal-input.component';
+import { TerminalComponent } from './main/components/terminal/terminal.component';
+import { TerminalContentComponent } from './main/components/terminal/terminal-content/terminal-content.component';
+import { TerminalInputComponent } from './main/components/terminal/terminal-input/terminal-input.component';
 import { TerminalStateModule } from './core/store/terminal';
-import { DisplayComponent } from './main/display/display.component';
+import { DisplayComponent } from './main/components/display/display.component';
 import { DisplayStateModule } from './core/store/display';
 import { ProgressBarComponent } from './main/components/progress-bar/progress-bar.component';
 import { LandingComponent } from './main/pages/landing/landing.component';
@@ -29,9 +29,11 @@ import { ExperienceComponent } from './main/pages/experience/experience.componen
 import { ProjectsComponent } from './main/pages/projects/projects.component';
 import { InterestComponent } from './main/pages/interest/interest.component';
 import { ContactComponent } from './main/pages/contact/contact.component';
-import { NavigationComponent } from './main/navigation/navigation.component';
-import { MenuComponent } from './main/navigation/menu/menu.component';
-import { SelectComponent } from './main/navigation/select/select.component';
+import { NavigationComponent } from './main/components/navigation/navigation.component';
+import { MenuComponent } from './main/components/navigation/menu/menu.component';
+import { SelectComponent } from './main/components/navigation/select/select.component';
+import { ModalComponent } from './main/components/modal/modal.component';
+import { SpinnerComponent } from './main/components/spinner/spinner.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { SelectComponent } from './main/navigation/select/select.component';
     ContactComponent,
     NavigationComponent,
     MenuComponent,
-    SelectComponent
+    SelectComponent,
+    ModalComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

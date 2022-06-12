@@ -2,10 +2,8 @@
   <div class="relative">
     <div class="flex-row gap-05 stretch fixed-width" (click)="changeState()">
       <span> Menu </span>
-      <div [ngSwitch]="selectState">
-        <span *ngSwitchCase="'close'">▼</span>
-        <span *ngSwitchDefault>▲</span>
-      </div>
+      <span class="arrow" [ngClass]="selectState === 'open' ? 'up' : 'down'">▼</span>
+
     </div>
     <div class="absolute" *ngIf="selectState === 'open'">
         <ul class="body flex-col gap-05">
@@ -17,7 +15,11 @@
           <li class="btn-primary" (click)="navigate('projects')"> {{'route.projects' | translate}} </li>
           <!-- <li class="btn-primary" (click)="navigate('interests')"> Zainteresowania </li> -->
           <li class="btn-primary" (click)="navigate('contact')"> {{'route.contact' | translate}} </li>
+          <ktbz-select #select></ktbz-select>
         </ul>
       </div>
+
+
     </div>
+
 </div>

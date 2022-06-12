@@ -1,9 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { RootState } from 'src/app/core/store/root.state';
-import { TerminalActions } from 'src/app/core/store/terminal';
+import { ContactService } from 'src/app/core/services/contact.service';
 import { MenuComponent } from './menu/menu.component';
 import { SelectComponent } from './select/select.component';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'ktbz-navigation',
@@ -13,16 +12,14 @@ import { SelectComponent } from './select/select.component';
 export class NavigationComponent implements OnInit {
 
   @ViewChild('menu') menu!: ElementRef<MenuComponent>;
-  @ViewChild('select') select!: ElementRef<SelectComponent>;
 
   @HostListener('document:click', ['$event'])
   onClick(even: any) {
     if (!(this.menu as any).ref.nativeElement.contains(even.target)) {}
-    if (!(this.select as any).ref.nativeElement.contains(even.target)) {}
   }
 
   constructor(
-    private store$: Store<RootState>
+    private contact: ContactService
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +27,9 @@ export class NavigationComponent implements OnInit {
 
   get localTime() {
     return new Date();
+  }
+
+  download() {
+    this.contact.downloadCV().subscribe((file) => saveAs(file, 'AJCVPL.pdf'));
   }
 }
