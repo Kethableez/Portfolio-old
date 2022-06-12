@@ -25,8 +25,8 @@ export class AppEffects {
   initApp$ = createEffect(() =>
     this.actions$.pipe(
       ofType(initApp),
-      concatMap(() => [
-        setLanguage({ language: Language.PL }),
+      concatMap(({language}) => [
+        setLanguage({ language: language }),
         setTheme({ theme: Theme.DARK }),
       ]),
       tap(() => this.translate.addLangs([Language.PL, Language.EN]))

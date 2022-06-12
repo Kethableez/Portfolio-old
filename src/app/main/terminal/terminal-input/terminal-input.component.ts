@@ -17,11 +17,23 @@ export class TerminalInputComponent implements OnInit {
   inputType$ = this.store$.select(getInputType);
 
   steps = [
-    'name',
-    'email',
-    'message',
-    'send'
-  ]
+    {
+      name: 'name',
+      label: 'Name',
+    },
+    {
+      name: 'email',
+      label: 'Email',
+    },
+    {
+      name: 'message',
+      label: 'Message',
+    },
+    {
+      name: 'send',
+      label: 'Send? (y/n)',
+    }
+  ];
   currentStep = this.steps[0];
 
 
@@ -55,18 +67,45 @@ export class TerminalInputComponent implements OnInit {
 
   nextStep(fieldName: string) {
     if(this.contactForm.controls['input'].valid) {
-      const index = this.processStep(fieldName);
-      this.currentStep = this.steps[index];
+      if (this.currentStep.name !== 'send') {
+        const index = this.processStep(fieldName);
+        this.currentStep = this.steps[index];
+      } else {
+        const value = this.contactForm.controls['input'].value;
+        if (value.toLowerCase() === 'y' || value.toLowerCase() === 'yes') {
+          this.onSend();
+        } else {
+          this.store$.dispatch(TerminalActions.runCommandSuccess({
+            payload: {
+              commandType: CommandType.DEFAULT,
+              content: 'Message not sent!'
+            }
+          }))
+        this.store$.dispatch(TerminalActions.changeInputType({ inputType: 'command' }));
 
-      if(this.currentStep === 'send') this.onSend();
+          this.contactForm.reset({
+            input: '',
+            name: '',
+            email: '',
+            message: '',
+          })
+        }
+        this.currentStep = this.steps[0];
+      }
     }
   }
 
   processStep(fieldName: string) {
-    const index = this.steps.indexOf(fieldName);
+    const index = this.steps.findIndex(step => step.name === fieldName);
     const value = this.contactForm.controls['input'].value;
     this.contactForm.controls[fieldName].setValue(value);
     this.contactForm.controls['input'].setValue('');
+    this.store$.dispatch(TerminalActions.runCommandSuccess({
+      payload: {
+        commandType: CommandType.DEFAULT,
+        content: `${fieldName}: ${value}`
+      }
+    }))
     return index + 1;
   }
 
@@ -98,7 +137,6 @@ export class TerminalInputComponent implements OnInit {
   }
 
   parseLang(val: string) {
-    console.log('val', val);
     return val.split(' ')[1];
   }
 }

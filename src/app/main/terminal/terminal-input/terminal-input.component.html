@@ -1,10 +1,10 @@
 <ng-container *ngIf="inputType$ | async as inputType">
   <div [ngSwitch]="inputType">
     <div *ngSwitchCase="'message'">
-      <form [formGroup]="contactForm" class="input flex-row gap-1" (keyup.enter)="nextStep(currentStep)">
+      <form [formGroup]="contactForm" class="input flex-row gap-1" (keyup.enter)="nextStep(currentStep.name)">
         <span class="bold primary">></span>
-        <span *ngIf="currentStep !== 'send'" class="bold white"> {{ currentStep }}:</span>
-        <input *ngIf="currentStep !== 'send'" class="bold white" type="text" formControlName="input">
+        <span class="bold white"> {{ currentStep.label }}:</span>
+        <input class="bold white" type="text" formControlName="input">
       </form>
     </div>
     <div *ngSwitchDefault>

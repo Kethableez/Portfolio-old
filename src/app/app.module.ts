@@ -29,6 +29,9 @@ import { ExperienceComponent } from './main/pages/experience/experience.componen
 import { ProjectsComponent } from './main/pages/projects/projects.component';
 import { InterestComponent } from './main/pages/interest/interest.component';
 import { ContactComponent } from './main/pages/contact/contact.component';
+import { NavigationComponent } from './main/navigation/navigation.component';
+import { MenuComponent } from './main/navigation/menu/menu.component';
+import { SelectComponent } from './main/navigation/select/select.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { ContactComponent } from './main/pages/contact/contact.component';
     ExperienceComponent,
     ProjectsComponent,
     InterestComponent,
-    ContactComponent
+    ContactComponent,
+    NavigationComponent,
+    MenuComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,

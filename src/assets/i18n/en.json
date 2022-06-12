@@ -3,14 +3,17 @@
   "app.header": "kethableez.github.io/Portfolio",
   "app.hint": "Hint: Type '{{command}}' to see details.",
 
+  "language.label": "Language:",
+  "language.en": "ENG",
+  "language.pl": "PL",
+
   "lang.changed": "Language changed",
 
 
   "about.header": "O mnie",
-  "about.paragraph.line1": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum quasi repellendus dolorum sequi. Explicabo dolores, illo nesciunt, dolorem, harum odit beatae vel sequi voluptates nemo omnis nobis eos ea laudantium.",
-  "about.paragraph.line2": "Doloribus, deserunt quos dolor fugiat officiis earum quae velit tenetur neque nemo optio ut? Iusto dolores ipsa exercitationem repudiandae, cumque ab enim quibusdam animi consequatur consequuntur rerum nemo iste alias?",
-  "about.paragraph.line3": "In possimus dolorem culpa dolores distinctio! Incidunt vitae unde tenetur porro, ipsa laborum non distinctio cupiditate ducimus exercitationem et soluta nam, nemo minus quam ipsam illo nisi blanditiis qui reprehenderit.",
-  "about.paragraph.line4": "Saepe consequuntur aliquid quae, eveniet velit vero possimus quod quibusdam enim quaerat quas maxime minus amet consequatur iste tempora repellat nisi dicta sint? Eligendi nisi minus dolores ducimus laboriosam maxime!",
+  "about.paragraph.line1": "I'm fullstack developer and hobbyst musician.",
+  "about.paragraph.line2": "I'm working mainly with web apps. But I'm open to new challenges!",
+  "about.paragraph.line3": "My fav pastimes are playing guitar and cruising down the street on my longboard 🛹",
 
   "education.header": "Education",
 

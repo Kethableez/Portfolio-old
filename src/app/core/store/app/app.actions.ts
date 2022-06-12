@@ -3,7 +3,7 @@ import { Language } from '../../models/language.model';
 import { PageType } from '../../models/page-type.model';
 import { Theme } from '../../models/theme.model';
 
-export const initApp = createAction('[App] Init App');
+export const initApp = createAction('[App] Init App', props<{ language: Language  }>());
 
 export const setLanguage = createAction(
   '[App] Set Language',

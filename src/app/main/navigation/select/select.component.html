@@ -1,0 +1,15 @@
+<div class="flex-row gap-1">
+  <span> {{ 'language.label' | translate }}</span>
+  <div class="relative" *ngIf="language$ | async as language">
+    <div class="flex-row gap-05 stretch fixed-width" (click)="changeState()">
+      {{ language.label | translate }}
+      <div [ngSwitch]="selectState">
+        <span *ngSwitchCase="'close'">▼</span>
+        <span *ngSwitchDefault>▲</span>
+      </div>
+    </div>
+    <div class="absolute flex-column" *ngIf="selectState === 'open'">
+      <p (click)="select(option.value)" class="option" *ngFor="let option of options"> {{ option.label | translate }}</p>
+    </div>
+  </div>
+</div>

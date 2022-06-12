@@ -24,7 +24,6 @@ export class TerminalComponent implements OnInit {
 
   updateScroll() {
     if(this.scrollable) {
-      console.log('is it working?');
       setTimeout(() => { this.scrolltop = this.scrollable.nativeElement.scrollHeight; }, 1)
     }
   }
