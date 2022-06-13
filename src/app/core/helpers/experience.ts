@@ -1,9 +1,11 @@
+import { Experience } from '../models/experience.model';
+
 export enum ExperienceType {
   COMARCH = 'comarch',
   FIVERR = 'fiverr',
 }
 
-export const experiences = [
+export const experiences: Experience[] = [
   {
     id: ExperienceType.COMARCH,
     position: 'position.comarch',
@@ -11,7 +13,7 @@ export const experiences = [
     start: 'start.comarch',
     end: 'end.comarch',
     description: 'description.comarch',
-    technologies: ['technology.angular', 'technology.java'],
+    technologies: ['technology.angular', 'technology.java', 'technology.git'],
   },
 
   {
@@ -21,6 +23,6 @@ export const experiences = [
     start: 'start.fiverr',
     end: 'end.fiverr',
     description: 'description.fiverr',
-    technologies: ['technology.angular', 'technology.html', 'technology.css'],
+    technologies: ['technology.angular', 'technology.html', 'technology.css', 'technology.git'],
   },
 ];

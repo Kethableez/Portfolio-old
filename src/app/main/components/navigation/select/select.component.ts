@@ -18,8 +18,8 @@ export class SelectComponent {
   ) { }
 
   changeLanguage(value: Language) {
-    const lang = value === 'pl' ? Language.EN : Language.PL;
-    this.store$.dispatch(AppActions.setLanguage({ language: lang }));
+    const language = value === 'pl' ? Language.EN : Language.PL;
+    this.store$.dispatch(AppActions.setLanguage({ language }));
   }
 
 }

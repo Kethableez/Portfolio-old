@@ -1,6 +1,7 @@
-import { EducationType } from '../models/test.model';
+import { Education } from '../models/education.model';
+import { EducationType } from '../models/education-type.model';
 
-export const educations = [
+export const educations: Education[] = [
   {
     id: EducationType.TECHNICIAN,
     field: 'field.technician',
@@ -26,9 +27,7 @@ export const educations = [
     end: 'end.engineer',
     description: 'description.engineer',
     achievements: [
-      'achievement.engineer.1',
-      'achievement.engineer.2',
-      'achievement.engineer.3',
+      'achievement.engineer.1'
     ]
   },
   {
@@ -41,9 +40,7 @@ export const educations = [
     end: 'end.master',
     description: 'description.master',
     achievements: [
-      'achievement.master.1',
-      'achievement.master.2',
-      'achievement.master.3',
+
     ]
   },
 ]

@@ -38,6 +38,10 @@ html,
   border: 0px none #ffffff;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 .page {
   position: relative;
   width: 100vw;
@@ -102,6 +106,14 @@ a {
   &:visited {
     color: $text-white;
   }
+}
+
+ktbz-display {
+  a {
+  &:visited {
+    color: $text-black;
+  }
+}
 }
 .gap-05 {
   gap: 0.5rem;
@@ -521,6 +533,7 @@ ktbz-select {
   .btn-secondary {
     padding: 0 0.2rem;
     border-radius: 0;
+    box-shadow: none !important;
   }
 }
 

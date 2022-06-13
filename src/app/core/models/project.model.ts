@@ -1,8 +1,12 @@
+import { ProjectType } from '../helpers/projects';
+
 export interface Project {
+  id: ProjectType;
   name: string;
   type: string;
-  url: string;
-  photoUrl: string;
+  link: string;
+
+  image: string;
   description: string;
   technologies: string[];
 }

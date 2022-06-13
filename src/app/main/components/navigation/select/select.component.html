@@ -3,7 +3,7 @@
   <div class="relative" *ngIf="language$ | async as language">
     <div class="flex-row gap-05 stretch">
       <div class="btn-secondary" (click)="changeLanguage(language)">
-        {{ 'language.'+language | translate }}
+        {{ 'language.short.'+language | translate }}
       </div>
     </div>
   </div>

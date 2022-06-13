@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { experiences } from 'src/app/core/helpers/experience';
+import { RootState } from 'src/app/core/store/root.state';
+import { TerminalActions } from 'src/app/core/store/terminal';
 
 @Component({
   selector: 'ktbz-experience',
@@ -8,7 +11,9 @@ import { experiences } from 'src/app/core/helpers/experience';
 })
 export class ExperienceComponent {
 
-  constructor() { }
+  constructor(
+    private store$: Store<RootState>
+  ) { }
 
   experiences = experiences;
 
@@ -16,5 +21,8 @@ export class ExperienceComponent {
     return `display exp [${experiences.map(p => p.id).join(' | ')}]`
   }
 
+  openDisplay(id: string) {
+    this.store$.dispatch(TerminalActions.displayCommand({ objectType: 'exp', id }))
+  }
 
 }

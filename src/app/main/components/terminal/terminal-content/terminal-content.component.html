@@ -5,8 +5,8 @@
     <div [ngSwitch]="command.commandType">
       <div *ngSwitchCase="CommandType.LS">
         <div class="flex-row wrap column-gap-1">
-          <p *ngFor="let route of command.content" class="bold white link">
-            {{ route | translate }}
+          <p *ngFor="let route of command.content" class="bold white link" (click)="navigate(route)">
+            {{ 'route.' + route | translate }}
           </p>
         </div>
       </div>
@@ -41,12 +41,20 @@
 
       <div *ngSwitchCase="CommandType.NOT_FOUND">
         <p class="bold white">
-          {{ "command.notfound" | translate: { command: command.content } }}
+          {{ command.content.label | translate }} <strong class="italic">{{ command.content.value }}</strong>
         </p>
       </div>
 
+      <div *ngSwitchCase="CommandType.MSG_INPUT">
+        <p class="bold white"> {{ command.content.fieldName | translate}} {{command.content.value}}</p>
+      </div>
+
+      <div *ngSwitchCase="CommandType.LANG">
+        <p class="bold white" *ngFor="let lang of command.content"> {{ lang.label}} - {{lang.value | translate}}</p>
+      </div>
+
       <div *ngSwitchDefault>
-        <p class="bold white">{{ command.content }}</p>
+        <p class="bold white">{{ command.content | translate }}</p>
       </div>
     </div>
   </ng-container>

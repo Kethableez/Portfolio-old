@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Modal } from '../core/models/modal.model';
+import { AppActions, isModalEnabled } from '../core/store/app';
 import { isOpen } from '../core/store/display';
 import { RootState } from '../core/store/root.state';
 
@@ -13,7 +14,8 @@ import { RootState } from '../core/store/root.state';
 })
 export class AppComponent {
   isDisplayOpen$ = this.store$.select(isOpen);
-  isModalOpen = true;
+  isModalOpen$ = this.store$.select(isModalEnabled);
+
   infoModal: Modal = {
     type: 'info',
     header: 'modal.info',
@@ -21,8 +23,9 @@ export class AppComponent {
     buttons: ['modal.ok'],
   }
 
-  closeModal() {
-    this.isModalOpen = false;
-  }
   constructor(private store$: Store<RootState>) {}
+
+  closeModal() {
+    this.store$.dispatch(AppActions.disableInfoModal());
+  }
 }

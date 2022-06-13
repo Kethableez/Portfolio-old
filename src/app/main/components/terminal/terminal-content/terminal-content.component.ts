@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { CommandType } from 'src/app/core/models/command-type.model';
 import { RootState } from 'src/app/core/store/root.state';
-import { getCommands } from 'src/app/core/store/terminal';
+import { getCommands, TerminalActions } from 'src/app/core/store/terminal';
 
 @Component({
   selector: 'ktbz-terminal-content',
@@ -19,11 +20,15 @@ export class TerminalContentComponent {
   );
 
   constructor(
-    private store$: Store<RootState>
+    private store$: Store<RootState>,
   ) { }
 
   get CommandType() {
     return CommandType;
+  }
+
+  navigate(directory: string) {
+    this.store$.dispatch(TerminalActions.cdCommand({ directory }));
   }
 
 }

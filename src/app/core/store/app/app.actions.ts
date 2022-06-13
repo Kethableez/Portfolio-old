@@ -19,3 +19,5 @@ export const setTitle = createAction(
   '[App] Set Title',
   props<{ title: PageType | string }>()
 );
+
+export const disableInfoModal = createAction('[App] Disable Info Modal');

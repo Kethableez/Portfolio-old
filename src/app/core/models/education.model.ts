@@ -1,9 +1,13 @@
+import { EducationType } from './education-type.model';
+
 export interface Education {
-  id: string;
+  id: EducationType;
   field: string;
+  specialty: string | null,
   title: string;
   school: string;
-  startDate: string;
-  endDate: string;
+  start: string;
+  description: string;
+  end: string;
   achievements: string[];
 }

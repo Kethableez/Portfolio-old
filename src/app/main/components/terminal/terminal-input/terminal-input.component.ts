@@ -62,7 +62,7 @@ export class TerminalInputComponent {
 
   runCommand() {
     const command: string = this.inputForm.controls['input'].value;
-    this.store$.dispatch(TerminalActions.runCommand({ command: command }));
+    this.store$.dispatch(TerminalActions.runCommand({ command }));
 
     this.inputForm.controls['input'].setValue('');
     this.ref.nativeElement.scrollTop = this.ref.nativeElement.scrollHeight;
@@ -102,10 +102,13 @@ export class TerminalInputComponent {
     this.contactForm.controls[fieldName].setValue(value);
     this.contactForm.controls['input'].setValue('');
     const payload = {
-      commandType: CommandType.DEFAULT,
-      content: `${fieldName}: ${value}`,
+      commandType: CommandType.MSG_INPUT,
+      content: {
+        fieldName: this.steps.find((step) => step.name === fieldName)?.label,
+        value: value,
+      }
     };
-    this.store$.dispatch(TerminalActions.runCommandSuccess({payload: payload}));
+    this.store$.dispatch(TerminalActions.runCommandSuccess({ payload }));
     return index + 1;
   }
 
@@ -118,12 +121,12 @@ export class TerminalInputComponent {
 
     const payload: Command = {
       commandType: CommandType.DEFAULT,
-      content:  this.translate.instant('message.sent'),
+      content:  'message.sent'
     };
 
     this.contactService.sendForm(formBody).subscribe(() => {
       this.store$.dispatch(
-        TerminalActions.runCommandSuccess({ payload: payload })
+        TerminalActions.runCommandSuccess({ payload })
       );
       this.store$.dispatch(
         TerminalActions.changeInputType({ inputType: 'command' })
@@ -138,7 +141,7 @@ export class TerminalInputComponent {
       TerminalActions.runCommandSuccess({
         payload: {
           commandType: CommandType.DEFAULT,
-          content: this.translate.instant('message.notsent'),
+          content: 'message.notsent'
         },
       })
     );

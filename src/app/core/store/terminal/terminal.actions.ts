@@ -32,7 +32,7 @@ export const msgCommand = createAction(
 
 export const displayCommand = createAction(
   '[Terminal] Run Display Command',
-  props<{ objectType: string, object: string }>()
+  props<{ objectType: string, id: string }>()
 );
 
 export const langCommand = createAction(

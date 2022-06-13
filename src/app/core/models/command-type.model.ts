@@ -8,4 +8,5 @@ export enum CommandType {
   NOT_FOUND = 'notFound',
   MSG = 'msg',
   WGET = 'wget',
+  MSG_INPUT = 'msgInput',
 }

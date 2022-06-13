@@ -5,8 +5,11 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { saveAs } from 'file-saver';
 import { concatMap, map } from 'rxjs';
+import { educations } from '../../helpers/education';
+import { experiences } from '../../helpers/experience';
 import { help } from '../../helpers/help';
 import { parseRoute } from '../../helpers/parse-route';
+import { projects } from '../../helpers/projects';
 import { routes } from '../../helpers/routes';
 import { CommandType } from '../../models/command-type.model';
 import { ContactService } from '../../services/contact.service';
@@ -28,6 +31,12 @@ import {
   wgetCommand
 } from './terminal.actions';
 
+const DATA: {[key: string]: any} = {
+  'exp': experiences,
+  'pro': projects,
+  'edu': educations
+}
+
 @Injectable()
 export class TerminalEffects {
   constructor(
@@ -45,7 +54,7 @@ export class TerminalEffects {
         const args = command.split(' ').map(arg => arg.toLowerCase())
         switch (args[0]) {
           case 'display':
-            return displayCommand({ objectType: args[1], object: args[2] });
+            return displayCommand({ objectType: args[1], id: args[2] });
 
           case 'help':
             return helpCommand({ command: args[1] });
@@ -80,8 +89,8 @@ export class TerminalEffects {
       ofType(msgCommand),
       concatMap(() => [
         changeInputType({ inputType: 'message' }),
-        runCommandSuccess({payload: { commandType: CommandType.CD,
-          content: this.translate.instant('message.run')}})
+        runCommandSuccess({payload: { commandType: CommandType.DEFAULT,
+          content: 'message.run'}})
       ]
     )
   ));
@@ -91,24 +100,21 @@ export class TerminalEffects {
       ofType(wgetCommand),
       map(({filename, lang}) => {
         if( filename !== 'cv') {
-          const content = filename ? `${this.translate.instant('command.file.notfound', {
-            filename: filename,
-          })}` : this.translate.instant('command.file.empty');
-
+          const content = filename ? { label: 'command.file.notfound', value: filename } : { label: 'command.file.empty'};
 
           const payload = {
-            commandType: CommandType.CD,
+            commandType: CommandType.NOT_FOUND,
             content: content
           };
-          return runCommandSuccess({ payload: payload });
+          return runCommandSuccess({ payload });
         }
         const language = lang ? lang : this.translate.currentLang;
         this.contactService.downloadCV(language).subscribe(cvFile => saveAs(cvFile, 'cv.pdf'));
           const payload = {
-            commandType: CommandType.CD,
-            content: this.translate.instant('download.started')
+            commandType: CommandType.DEFAULT,
+            content: 'download.started'
           };
-          return runCommandSuccess({ payload: payload });
+          return runCommandSuccess({ payload });
         }
       )
     )
@@ -117,8 +123,42 @@ export class TerminalEffects {
   runDisplay$ = createEffect(() =>
     this.actions$.pipe(
       ofType(displayCommand),
-      map(({objectType, object }) => {
-        return openDisplay({ objectType: objectType, object: object });
+      map(({ objectType, id }) => {
+        if (!objectType) {
+          const payload = {
+            commandType: CommandType.NOT_FOUND,
+            content: { label: 'command.type.empty' }
+          }
+          return runCommandSuccess({ payload });
+        }
+
+        if (!['edu', 'exp', 'pro'].includes(objectType)) {
+          const payload = {
+            commandType: CommandType.NOT_FOUND,
+            content: { label: 'command.type.notfound', value: objectType }
+          }
+          return runCommandSuccess({ payload });
+        }
+
+        if (!id) {
+          const payload = {
+            commandType: CommandType.NOT_FOUND,
+            content: { label: 'command.object.empty' }
+          }
+          return runCommandSuccess({ payload });
+        }
+
+        const object = DATA[objectType].find((obj: any) => obj.id === id);
+
+        if (!object) {
+          const payload = {
+            commandType: CommandType.NOT_FOUND,
+            content: { label: 'command.object.notfound', value: id }
+          }
+          return runCommandSuccess({ payload });
+        }
+
+        return openDisplay({ objectType, object });
       })
     )
   )
@@ -127,18 +167,26 @@ export class TerminalEffects {
     this.actions$.pipe(
       ofType(helpCommand),
       map(({ command }) => {
-        const temp = command
+        const content = command
           ? help.filter((h) => h.command === command)
           : help;
 
-        // Todo better way to do this
-        const content = temp.length !== 0 ? temp : `${this.translate.instant('command.notfound', {command: command})}`;
+        if(content.length === 0) {
+          const payload = {
+            commandType: CommandType.NOT_FOUND,
+            content: {
+              label: 'command.notfound',
+              value: command
+            }
+          };
+          return runCommandSuccess({ payload });
+        }
 
         const payload = {
           commandType: CommandType.HELP,
           content: content,
         };
-        return runCommandSuccess({ payload: payload });
+        return runCommandSuccess({ payload });
       })
     )
   );
@@ -151,12 +199,13 @@ export class TerminalEffects {
           const path = parseRoute(directory);
           if (path === 'DIR_NOT_FOUND') {
             const payload = {
-              commandType: CommandType.CD,
-              content: `${this.translate.instant('command.dir.notfound', {
-                directory: directory,
-              })}`,
+              commandType: CommandType.NOT_FOUND,
+              content: {
+                label: 'command.dir.notfound',
+                value: directory
+              }
             };
-            return runCommandSuccess({ payload: payload });
+            return runCommandSuccess({ payload });
           }
 
           this.router.navigateByUrl(`/${path}`);
@@ -168,7 +217,7 @@ export class TerminalEffects {
           commandType: CommandType.CD,
           content: `~/Portfolio${this.router.url}`,
         };
-        return runCommandSuccess({ payload: payload });
+        return runCommandSuccess({ payload });
       })
     )
   );
@@ -181,7 +230,7 @@ export class TerminalEffects {
           commandType: CommandType.LS,
           content: routes,
         };
-        return runCommandSuccess({ payload: payload });
+        return runCommandSuccess({ payload });
       })
     )
   );
@@ -190,16 +239,24 @@ export class TerminalEffects {
     this.actions$.pipe(
       ofType(langCommand),
       map(({ lang }) => {
-        window.location.reload();
         if (lang) {
           this.translate.use(lang);
+          const payload = {
+            commandType: CommandType.DEFAULT,
+            content: 'lang.changed',
+          };
+          return runCommandSuccess({ payload });
         }
-        const content = lang ? this.translate.instant('lang.changed') : [this.translate.langs]
         const payload = {
           commandType: CommandType.LANG,
-          content: content,
+          content: [...this.translate.langs].map(lang => {
+            return {
+              label: lang,
+            value: `language.long.${lang}`
+            }
+          }),
         };
-        return runCommandSuccess({ payload: payload });
+        return runCommandSuccess({ payload });
       })
     )
   )
@@ -212,7 +269,7 @@ export class TerminalEffects {
           commandType: CommandType.NOT_FOUND,
           content: command,
         };
-        return runCommandSuccess({ payload: payload });
+        return runCommandSuccess({ payload });
       })
     )
   );

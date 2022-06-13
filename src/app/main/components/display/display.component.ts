@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { combineLatest } from 'rxjs';
 import { DisplayActions, getObject, getObjectType } from 'src/app/core/store/display';
 import { RootState } from 'src/app/core/store/root.state';
 
@@ -10,8 +11,10 @@ import { RootState } from 'src/app/core/store/root.state';
 })
 export class DisplayComponent {
 
-  type$ = this.store$.select(getObjectType);
-  object$ = this.store$.select(getObject);
+  displayObject$ = combineLatest([
+    this.store$.select(getObjectType),
+    this.store$.select(getObject)
+  ], (type, object) => ({ type, object }));
 
   constructor(
     private store$: Store<RootState>

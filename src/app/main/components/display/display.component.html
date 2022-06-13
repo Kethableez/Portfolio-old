@@ -11,9 +11,44 @@
     <div class="button btn-red" (click)="close() "></div>
   </div>
 </div>
-<div class="body flex-col">
-  <h1 *ngIf="type$ | async as type"> {{ type }}</h1>
-  <p *ngIf="object$ | async as object"> {{ object | json }} </p>
+<div class="body flex-col" *ngIf="displayObject$ | async as displayObject">
+  <div [ngSwitch]="displayObject.type">
+    <div *ngSwitchCase="'edu'">
+      <h1> {{ displayObject.object.field | translate}}</h1>
+      <p class="italic"> {{ displayObject.object.specialty | translate }}</p>
+      <p class="bold"> {{ displayObject.object.title | translate}}</p>
+      <p> {{ displayObject.object.school | translate}}</p>
+      <p class="italic"> {{ displayObject.object.start | translate}} - {{ displayObject.object.end | translate}}</p>
+      <div class="spacer"></div>
+      <p class="black"> {{ displayObject.object.description | translate }}</p>
+      <div class="spacer"></div>
+      <h3 *ngIf="displayObject.object.achievements.length !== 0"> {{'education.subheader' | translate}}</h3>
+      <p class="black" *ngFor="let achievement of displayObject.object.achievements"> {{ achievement | translate }}</p>
+    </div>
+
+    <div *ngSwitchCase="'pro'">
+      <h1> {{ displayObject.object.name | translate}}</h1>
+      <p class="black italic"> {{ displayObject.object.type | translate }}</p>
+      <a class="black link italic" [href]="displayObject.object.link" target="_blank"> {{ displayObject.object.link }} </a>
+      <div class="spacer"></div>
+      <p class="black"> {{ displayObject.object.description | translate}}</p>
+      <div class="spacer"></div>
+      <h3> {{'project.subheader' | translate}}</h3>
+      <p class="black" *ngFor="let technology of displayObject.object.technologies"> {{ technology | translate }}</p>
+    </div>
+
+    <div *ngSwitchCase="'exp'">
+      <h1> {{ displayObject.object.company | translate}}</h1>
+      <p class="black bold italic"> {{ displayObject.object.position | translate }}</p>
+      <p class="italic"> {{ displayObject.object.start | translate}} - {{ displayObject.object.end | translate}}</p>
+      <div class="spacer"></div>
+      <p class="black"> {{ displayObject.object.description | translate}}</p>
+
+      <div class="spacer"></div>
+      <h3> {{'experience.subheader' | translate}}</h3>
+      <p class="black" *ngFor="let technology of displayObject.object.technologies"> {{ technology | translate }}</p>
+    </div>
+  </div>
 </div>
 
 

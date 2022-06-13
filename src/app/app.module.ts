@@ -34,6 +34,8 @@ import { MenuComponent } from './main/components/navigation/menu/menu.component'
 import { SelectComponent } from './main/components/navigation/select/select.component';
 import { ModalComponent } from './main/components/modal/modal.component';
 import { SpinnerComponent } from './main/components/spinner/spinner.component';
+import { metaReducers } from './core/store/root.state';
+import { HydrationEffects } from './core/store/hydration/hydration.effects';
 
 
 @NgModule({
@@ -74,8 +76,8 @@ import { SpinnerComponent } from './main/components/spinner/spinner.component';
         deps: [HttpClient],
       },
     }),
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}, {metaReducers}),
+    EffectsModule.forRoot([HydrationEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

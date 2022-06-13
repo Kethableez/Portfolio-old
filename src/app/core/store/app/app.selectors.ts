@@ -14,3 +14,5 @@ export const isPageVisible = (page: PageType) => createSelector(
   getTitle,
   (title) => title === page
 );
+
+export const isModalEnabled = createSelector(app, (state: App.State) => state.infoModal);
