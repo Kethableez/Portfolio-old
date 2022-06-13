@@ -1,13 +1,8 @@
 import {
-  Component,
-  ElementRef,
-  HostListener,
-  QueryList,
-  ViewChildren,
+  Component
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PageType } from '../core/models/page-type.model';
-import { AppActions, getTheme } from '../core/store/app';
+import { Modal } from '../core/models/modal.model';
 import { isOpen } from '../core/store/display';
 import { RootState } from '../core/store/root.state';
 
@@ -18,11 +13,16 @@ import { RootState } from '../core/store/root.state';
 })
 export class AppComponent {
   isDisplayOpen$ = this.store$.select(isOpen);
-  modalParts = {
+  isModalOpen = true;
+  infoModal: Modal = {
+    type: 'info',
     header: 'modal.info',
     message: 'modal.message',
     buttons: ['modal.ok'],
   }
 
+  closeModal() {
+    this.isModalOpen = false;
+  }
   constructor(private store$: Store<RootState>) {}
 }

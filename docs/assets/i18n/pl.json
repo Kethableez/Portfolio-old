@@ -5,16 +5,12 @@
   "language.label": "Język:",
   "language.en": "ANG",
   "language.pl": "PL",
-
   "lang.changed": "Zmieniono język",
-
   "about.header": "O mnie",
   "about.paragraph.line1": "Jestem fullstack developerem oraz muzykiem hobbystą.",
   "about.paragraph.line2": "Pracuję głównie z aplikacjami internetowymi. Natomiast jestem otwarty na nowe wyzwania!",
   "about.paragraph.line3": "Czas wolny lubię spędzać tworząc muzykę lub jeżdząc na desce 🛹",
-
   "education.header": "Edukacja",
-
   "field.technician": "Mechatronika",
   "title.technician": "Technik",
   "start.technician": "Wrzesień 2014",
@@ -23,7 +19,6 @@
   "achievement.technician.1": "",
   "achievement.technician.2": "",
   "achievement.technician.3": "",
-
   "field.engineer": "Automatyka i Robotyka",
   "title.engineer": "Inżynier",
   "specialty.engineer": "Przemysł 4.0",
@@ -33,7 +28,6 @@
   "achievement.engineer.1": "",
   "achievement.engineer.2": "",
   "achievement.engineer.3": "",
-
   "field.master": "Informatyka Techniczna",
   "title.master": "Magister",
   "specialty.master": "Inżynieria systemów informatycznych",
@@ -43,83 +37,64 @@
   "achievement.master.1": "",
   "achievement.master.2": "",
   "achievement.master.3": "",
-
   "project.header": "Projekty",
-
   "name.tuziemiec": "Tuziemiec",
   "type.tuziemiec": "KPZ",
   "description.tuziemiec": "",
-
   "name.walker": "Walker",
   "type.walker": "Praca inżynierska",
   "description.walker": "",
-
   "name.anytravel": "AnyTravel",
   "type.anytravel": "ZWiG",
   "description.anytravel": "",
-
-
   "school.highschool": "ZSE nr. 5 w Opolu 'Elektryczniak'",
   "school.university": "Politechnika Wrocławska",
-
   "experience.header": "Doświadczenie",
   "experience.technologies": "Technologie:",
-
   "company.comarch": "Comarch",
   "position.comarch": "Frontend Developer",
   "description.comarch": "",
   "start.comarch": "Czerwiec 2021",
   "end.comarch": "Obecnie",
-
   "company.fiverr": "Fiverr",
   "position.fiverr": "Freelance Developer",
   "description.fiverr": "",
   "start.fiverr": "Marzec 2022",
   "end.fiverr": "Obecnie",
-
   "landing.greeting": "Hej! 👋",
   "landing.im": "Jestem",
   "landing.fullname": "Amadeusz Janiszyn",
   "landing.fullstack": "Fullstack developer",
   "landing.run": "Wpisz",
   "landing.run.description": "aby zobaczyć dostepne komendy",
-
   "command.notfound": "Nie znaleziono komendy '{{command}}'",
   "command.dir.notfound": "System nie może odnaleźć ścieżki: {{directory}}",
+  "command.file.notfound": "System nie może odnaleźć pliku: {{filename}}",
   "help.usage": "Użycie:",
-
   "command.help": "HELP",
   "command.help.description": "Wyświetla pomoc dla podanej komendy",
   "command.help.usage": "help [komenda]",
-
   "command.ls": "LS",
   "command.ls.description": "Wyświetla listę plików w katalogu",
   "command.ls.usage": "ls",
-
   "command.lang": "LANG",
   "command.lang.description": "Wyświetla listę dostępnych języków lub zmienia język",
   "command.lang.usage": "lang [język]",
-
   "command.clear": "CLEAR",
   "command.clear.description": "Czyści ekran",
   "command.clear.usage": "clear",
-
   "command.cd": "CD",
   "command.cd.description": "Wyświetla aktualną lokalizację lub przechodzi do podanej lokalizacji",
   "command.cd.usage": "cd [..]",
-
   "command.msg": "MSG",
   "command.msg.description": "Uruchamia program do wysyłania wiadomości",
   "command.msg.usage": "msg",
-
   "command.wget": "WGET",
   "command.wget.description": "Pobiera podany plik",
   "command.wget.usage": "wget [file]",
-
   "command.display": "DISPLAY",
   "command.display.description": "Uruchamia aplikację display z podanymi parametrami",
   "command.display.usage": "display [selektor] [nazwa]",
-
   "skills.header": "Umiejętności",
   "technology.angular": "Angular",
   "technology.nodejs": "NodeJS",
@@ -139,7 +114,6 @@
   "technology.cpp": "C++",
   "technology.python": "Python",
   "lang.english": "Angielski",
-
   "route.landing": "Start",
   "route.about": "O mnie",
   "route.skills": "Umiejętności",
@@ -147,10 +121,22 @@
   "route.experience": "Doświadczenie",
   "route.projects": "Projekty",
   "route.contact": "Kontakt",
-
   "contact.data": "Moje dane:",
   "contact.social": "Social media:",
-
+  "modal.message": "Portfolio jest obecnie w fazie budowy. Część zaplanowanych funkcjonalności jeszcze nie działa zatem autor prosi o wyrozumiałość.",
+  "modal.info": "Informacja",
+  "modal.ok": "Zrozumiałem!",
   "contact.help.msg": "Wpisz 'msg', aby wysłać mi wiadomość",
-  "contact.help.wget": "Wpisz 'wget cv', aby pobrać moje CV"
+  "contact.help.wget": "Wpisz 'wget cv', aby pobrać moje CV",
+  "message.run": "Rozpoczęto tworzenie wiadomości. Naciśnij 'Ctrl+C lub wpisz 'q' aby zakończyć.",
+  "menu.header": "Menu",
+  "display.header": "Display",
+  "command.file.empty": "Należy podać nazwę pliku",
+  "download.started": "Pobieranie rozpoczęte",
+  "message.notsent": "Wiadomość nie została wysłana",
+  "message.sent": "Wiadomość wysłana",
+  "message.label.name": "Imię:",
+  "message.label.email": "Email:",
+  "message.label.message": "Wiadomość:",
+  "message.label.send": "Wysłać? (t/n)"
 }

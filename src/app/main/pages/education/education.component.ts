@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { educations } from 'src/app/core/helpers/education';
 
 @Component({
@@ -6,13 +6,10 @@ import { educations } from 'src/app/core/helpers/education';
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss']
 })
-export class EducationComponent implements OnInit {
+export class EducationComponent {
 
   educations = educations;
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   get hint() {
     return `display edu [${educations.map(p => p.id).join(' | ')}]`

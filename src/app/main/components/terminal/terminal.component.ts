@@ -1,26 +1,17 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { tap, timer } from 'rxjs';
-import { RootState } from 'src/app/core/store/root.state';
-import { getCommands } from 'src/app/core/store/terminal';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'ktbz-terminal',
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss']
 })
-export class TerminalComponent implements OnInit {
+export class TerminalComponent {
 
   @ViewChild('scrollable') scrollable!: ElementRef;
   scrolltop: number = 0;
 
   constructor(
-    private store$: Store<RootState>
   ) { }
-
-  ngOnInit(): void {
-
-  }
 
   updateScroll() {
     if(this.scrollable) {

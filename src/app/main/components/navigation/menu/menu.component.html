@@ -1,9 +1,9 @@
 <div class="flex-row gap-1">
   <div class="relative">
     <div class="flex-row gap-05 stretch fixed-width" (click)="changeState()">
-      <span> Menu </span>
       <span class="arrow" [ngClass]="selectState === 'open' ? 'up' : 'down'">▼</span>
-
+      <span> {{ 'menu.header' | translate}} </span>
+      <div class="spacer"></div>
     </div>
     <div class="absolute" *ngIf="selectState === 'open'">
         <ul class="body flex-col gap-05">

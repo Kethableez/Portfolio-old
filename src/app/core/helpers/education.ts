@@ -1,8 +1,4 @@
-export enum EducationType {
-  TECHNICIAN = 'technician',
-  ENGINEER = 'engineer',
-  MASTER = 'master',
-}
+import { EducationType } from '../models/test.model';
 
 export const educations = [
   {

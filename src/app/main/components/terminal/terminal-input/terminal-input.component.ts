@@ -1,6 +1,9 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { tap } from 'rxjs';
+import { steps } from 'src/app/core/helpers/steps';
 import { CommandType } from 'src/app/core/models/command-type.model';
 import { Command } from 'src/app/core/models/command.model';
 import { ContactService } from 'src/app/core/services/contact.service';
@@ -12,36 +15,38 @@ import { getInputType, TerminalActions } from 'src/app/core/store/terminal';
   templateUrl: './terminal-input.component.html',
   styleUrls: ['./terminal-input.component.scss'],
 })
-export class TerminalInputComponent implements OnInit {
+export class TerminalInputComponent {
+  inputType$ = this.store$.select(getInputType).pipe(
+    tap((inputType) => {
+      this.formEnabled = inputType === 'message';
+    }));
 
-  inputType$ = this.store$.select(getInputType);
-
-  steps = [
-    {
-      name: 'name',
-      label: 'Name',
-    },
-    {
-      name: 'email',
-      label: 'Email',
-    },
-    {
-      name: 'message',
-      label: 'Message',
-    },
-    {
-      name: 'send',
-      label: 'Send? (y/n)',
+  @HostListener('window:keydown.Control.c', ['$event'])
+  onKeyDown() {
+    if(this.formEnabled) {
+      this.store$.dispatch(
+        TerminalActions.runCommandSuccess({
+          payload: {
+            commandType: CommandType.DEFAULT,
+            content: '^C',
+          },
+        })
+      );
+      this.discard();
     }
-  ];
+  }
+
+  steps = steps;
   currentStep = this.steps[0];
+  formEnabled = false;
 
 
   constructor(
     private builder: FormBuilder,
     private store$: Store<RootState>,
     private ref: ElementRef,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private translate: TranslateService
   ) {}
 
   inputForm = this.builder.group({
@@ -55,9 +60,7 @@ export class TerminalInputComponent implements OnInit {
     message: ['', Validators.required],
   });
 
-  ngOnInit(): void {}
-
-  runCommand(e: any) {
+  runCommand() {
     const command: string = this.inputForm.controls['input'].value;
     this.store$.dispatch(TerminalActions.runCommand({ command: command }));
 
@@ -66,46 +69,43 @@ export class TerminalInputComponent implements OnInit {
   }
 
   nextStep(fieldName: string) {
-    if(this.contactForm.controls['input'].valid) {
-      if (this.currentStep.name !== 'send') {
-        const index = this.processStep(fieldName);
+    if (this.contactForm.controls['input'].valid) {
+      const value = this.contactForm.controls['input'].value;
+      if (value.toLowerCase() === 'q') this.discard();
+
+      else if (this.currentStep.name !== 'send') {
+        const index = this.processStep(fieldName, value);
         this.currentStep = this.steps[index];
       } else {
-        const value = this.contactForm.controls['input'].value;
-        if (value.toLowerCase() === 'y' || value.toLowerCase() === 'yes') {
-          this.onSend();
-        } else {
-          this.store$.dispatch(TerminalActions.runCommandSuccess({
-            payload: {
-              commandType: CommandType.DEFAULT,
-              content: 'Message not sent!'
-            }
-          }))
-        this.store$.dispatch(TerminalActions.changeInputType({ inputType: 'command' }));
-
-          this.contactForm.reset({
-            input: '',
-            name: '',
-            email: '',
-            message: '',
-          })
-        }
+        if (this.checkExitCondition(value)) this.onSend();
+        else this.discard();
         this.currentStep = this.steps[0];
       }
     }
   }
 
-  processStep(fieldName: string) {
-    const index = this.steps.findIndex(step => step.name === fieldName);
-    const value = this.contactForm.controls['input'].value;
+  reset() {
+    this.contactForm.reset({
+      input: '',
+      name: '',
+      email: '',
+      message: '',
+    });
+  }
+
+  checkExitCondition(value: string) {
+    return value.toLowerCase() === 'y' || value.toLowerCase() === 'yes' || value.toLowerCase() === 'tak' || value.toLowerCase() === 't';
+  }
+
+  processStep(fieldName: string, value: string) {
+    const index = this.steps.findIndex((step) => step.name === fieldName);
     this.contactForm.controls[fieldName].setValue(value);
     this.contactForm.controls['input'].setValue('');
-    this.store$.dispatch(TerminalActions.runCommandSuccess({
-      payload: {
-        commandType: CommandType.DEFAULT,
-        content: `${fieldName}: ${value}`
-      }
-    }))
+    const payload = {
+      commandType: CommandType.DEFAULT,
+      content: `${fieldName}: ${value}`,
+    };
+    this.store$.dispatch(TerminalActions.runCommandSuccess({payload: payload}));
     return index + 1;
   }
 
@@ -118,21 +118,32 @@ export class TerminalInputComponent implements OnInit {
 
     const payload: Command = {
       commandType: CommandType.DEFAULT,
-      content: 'Message sent!',
-    }
+      content:  this.translate.instant('message.sent'),
+    };
 
+    this.contactService.sendForm(formBody).subscribe(() => {
+      this.store$.dispatch(
+        TerminalActions.runCommandSuccess({ payload: payload })
+      );
+      this.store$.dispatch(
+        TerminalActions.changeInputType({ inputType: 'command' })
+      );
+      this.reset();
+    });
+  }
 
-    this.contactService.sendForm(formBody).subscribe(
-      () => {
-        this.store$.dispatch(TerminalActions.runCommandSuccess({ payload: payload}));
-        this.store$.dispatch(TerminalActions.changeInputType({ inputType: 'command' }));
-        this.contactForm.reset({
-          input: '',
-          name: '',
-          email: '',
-          message: '',
-        })
-      }
+  private discard() {
+    this.reset();
+    this.store$.dispatch(
+      TerminalActions.runCommandSuccess({
+        payload: {
+          commandType: CommandType.DEFAULT,
+          content: this.translate.instant('message.notsent'),
+        },
+      })
+    );
+    this.store$.dispatch(
+      TerminalActions.changeInputType({ inputType: 'command' })
     );
   }
 

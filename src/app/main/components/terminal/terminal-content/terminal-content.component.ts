@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { CommandType } from 'src/app/core/models/command-type.model';
@@ -10,7 +10,7 @@ import { getCommands } from 'src/app/core/store/terminal';
   templateUrl: './terminal-content.component.html',
   styleUrls: ['./terminal-content.component.scss']
 })
-export class TerminalContentComponent implements OnInit {
+export class TerminalContentComponent {
 
   @Output() newEntry = new EventEmitter<void>();
 
@@ -21,9 +21,6 @@ export class TerminalContentComponent implements OnInit {
   constructor(
     private store$: Store<RootState>
   ) { }
-
-  ngOnInit(): void {
-  }
 
   get CommandType() {
     return CommandType;

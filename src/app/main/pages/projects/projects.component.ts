@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { projects } from 'src/app/core/helpers/projects';
 
 @Component({
@@ -6,14 +6,11 @@ import { projects } from 'src/app/core/helpers/projects';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent {
 
   constructor() { }
 
   projects = projects;
-
-  ngOnInit(): void {
-  }
 
   get hint() {
     return `display pro [${projects.map(p => p.id).join(' | ')}]`

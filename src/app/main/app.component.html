@@ -2,5 +2,5 @@
   <ktbz-terminal class="flex-col"></ktbz-terminal>
   <ktbz-display *ngIf="isDisplayOpen$ | async as isOpen" class="flex-col"></ktbz-display>
   <ktbz-navigation></ktbz-navigation>
-  <!-- <ktbz-modal [header]="modalParts.header" [message]="modalParts.message" [buttons]="modalParts.buttons"></ktbz-modal> -->
+  <ktbz-modal *ngIf="isModalOpen" [modal]="infoModal" (close)="closeModal()"></ktbz-modal>
 </div>

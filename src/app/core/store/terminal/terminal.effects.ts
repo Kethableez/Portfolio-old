@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { map } from 'rxjs';
+import { saveAs } from 'file-saver';
+import { concatMap, map } from 'rxjs';
 import { help } from '../../helpers/help';
 import { parseRoute } from '../../helpers/parse-route';
 import { routes } from '../../helpers/routes';
 import { CommandType } from '../../models/command-type.model';
+import { ContactService } from '../../services/contact.service';
 import { setTitle } from '../app/app.actions';
 import { openDisplay } from '../display/display.actions';
 import { RootState } from '../root.state';
@@ -23,6 +25,7 @@ import {
   notFoundCommand,
   runCommand,
   runCommandSuccess,
+  wgetCommand
 } from './terminal.actions';
 
 @Injectable()
@@ -31,7 +34,8 @@ export class TerminalEffects {
     private actions$: Actions,
     private store$: Store<RootState>,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private contactService: ContactService,
   ) {}
 
   runCommand$ = createEffect(() =>
@@ -61,6 +65,9 @@ export class TerminalEffects {
           case 'clear':
             return clearCommand();
 
+          case 'wget':
+            return wgetCommand({ filename: args[1], lang: args[2] });
+
           default:
             return notFoundCommand({ command: args[0] });
         }
@@ -71,9 +78,41 @@ export class TerminalEffects {
   msgCommand$ = createEffect(() =>
     this.actions$.pipe(
       ofType(msgCommand),
-      map(() => changeInputType({ inputType: 'message' })
+      concatMap(() => [
+        changeInputType({ inputType: 'message' }),
+        runCommandSuccess({payload: { commandType: CommandType.CD,
+          content: this.translate.instant('message.run')}})
+      ]
     )
   ));
+
+  wgetCommand$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(wgetCommand),
+      map(({filename, lang}) => {
+        if( filename !== 'cv') {
+          const content = filename ? `${this.translate.instant('command.file.notfound', {
+            filename: filename,
+          })}` : this.translate.instant('command.file.empty');
+
+
+          const payload = {
+            commandType: CommandType.CD,
+            content: content
+          };
+          return runCommandSuccess({ payload: payload });
+        }
+        const language = lang ? lang : this.translate.currentLang;
+        this.contactService.downloadCV(language).subscribe(cvFile => saveAs(cvFile, 'cv.pdf'));
+          const payload = {
+            commandType: CommandType.CD,
+            content: this.translate.instant('download.started')
+          };
+          return runCommandSuccess({ payload: payload });
+        }
+      )
+    )
+  );
 
   runDisplay$ = createEffect(() =>
     this.actions$.pipe(
@@ -93,7 +132,7 @@ export class TerminalEffects {
           : help;
 
         // Todo better way to do this
-        const content = temp.length !== 0 ? temp : ['This command is not found: ' + command];
+        const content = temp.length !== 0 ? temp : `${this.translate.instant('command.notfound', {command: command})}`;
 
         const payload = {
           commandType: CommandType.HELP,
@@ -151,10 +190,10 @@ export class TerminalEffects {
     this.actions$.pipe(
       ofType(langCommand),
       map(({ lang }) => {
+        window.location.reload();
         if (lang) {
           this.translate.use(lang);
         }
-
         const content = lang ? this.translate.instant('lang.changed') : [this.translate.langs]
         const payload = {
           commandType: CommandType.LANG,

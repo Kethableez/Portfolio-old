@@ -1,19 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Modal } from 'src/app/core/models/modal.model';
 
 @Component({
   selector: 'ktbz-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
 
-  @Input() header = 'Modal';
-  @Input() message: string = 'Hello World';
-  @Input() buttons: string[] = ['Ok', 'Cancel'];
-
+  @Input() modal!: Modal;
+  @Output() closeModal = new EventEmitter<void>();
   constructor() { }
 
-  ngOnInit(): void {
+  onClose() {
+    this.closeModal.emit();
   }
-
 }

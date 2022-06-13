@@ -2,21 +2,15 @@
   "app.startup": "System starting ...",
   "app.header": "kethableez.github.io/Portfolio",
   "app.hint": "Hint: Type '{{command}}' to see details.",
-
   "language.label": "Language:",
   "language.en": "ENG",
   "language.pl": "PL",
-
   "lang.changed": "Language changed",
-
-
   "about.header": "O mnie",
   "about.paragraph.line1": "I'm fullstack developer and hobbyst musician.",
   "about.paragraph.line2": "I'm working mainly with web apps. But I'm open to new challenges!",
   "about.paragraph.line3": "My fav pastimes are playing guitar and cruising down the street on my longboard 🛹",
-
   "education.header": "Education",
-
   "field.technician": "Mechatronics",
   "title.technician": "Technician",
   "start.technician": "Sep 2014",
@@ -25,7 +19,6 @@
   "achievement.technician.1": "",
   "achievement.technician.2": "",
   "achievement.technician.3": "",
-
   "field.engineer": "Computer Engineering and Robotics",
   "title.engineer": "Engineer",
   "specialty.engineer": "Industry 4.0",
@@ -35,7 +28,6 @@
   "achievement.engineer.1": "",
   "achievement.engineer.2": "",
   "achievement.engineer.3": "",
-
   "field.master": "Computer Engineering",
   "title.master": "Master",
   "specialty.master": "IT Systems Engineering",
@@ -45,75 +37,57 @@
   "achievement.master.1": "",
   "achievement.master.2": "",
   "achievement.master.3": "",
-
   "project.header": "Projects",
-
   "name.tuziemiec": "Tuziemiec",
   "type.tuziemiec": "KPZ",
   "description.tuziemiec": "",
-
   "name.walker": "Walker",
   "type.walker": "Engineer thesis",
   "description.walker": "",
-
   "name.anytravel": "AnyTravel",
   "type.anytravel": "ZWiG",
   "description.anytravel": "",
-
   "school.highschool": "Technical High School no 5 in Opole 'Elektryczniak'",
   "school.university": "Wrocław University of Science and Technology",
-
   "experience.header": "Experience",
   "experience.technologies": "Technologies:",
-
   "company.comarch": "Comarch",
   "position.comarch": "Frontend Developer",
   "description.comarch": "",
   "start.comarch": "Jun 2021",
   "end.comarch": "Present",
-
   "company.fiverr": "Fiverr",
   "position.fiverr": "Freelance Developer",
   "description.fiverr": "",
   "start.fiverr": "Mar 2022",
   "end.fiverr": "Present",
-
-
   "landing.greeting": "Hi! 👋",
   "landing.im": "I'm",
   "landing.fullname": "Amadeusz Janiszyn",
   "landing.fullstack": "Fullstack developer",
   "landing.run": "Run",
   "landing.run.description": "to see available commands",
-
   "command.notfound": "Command not found: '{{command}}'",
   "command.dir.notfound": "System cannot find the path specified: {{directory}}",
   "help.usage": "Usage:",
-
   "command.help": "HELP",
   "command.help.description": "Provides help information",
   "command.help.usage": "help [command]",
-
   "command.ls": "LS",
   "command.ls.description": "List files and directories",
   "command.ls.usage": "ls",
-
   "command.lang": "LANG",
   "command.lang.description": "List available languages or change current language",
   "command.lang.usage": "lang [language]",
-
   "command.clear": "CLEAR",
   "command.clear.description": "Clear the terminal screen",
   "command.clear.usage": "clear",
-
   "command.cd": "CD",
   "command.cd.description": "Display or change current directory",
   "command.cd.usage": "cd [..]",
-
   "command.display": "DISPLAY",
   "command.display.description": "Run display application with specified parameters",
   "command.display.usage": "display [selector] [name]",
-
   "skills.header": "Skills",
   "technology.angular": "Angular",
   "technology.nodejs": "NodeJS",
@@ -133,12 +107,36 @@
   "technology.cpp": "C++",
   "technology.python": "Python",
   "lang.english": "English",
-
   "route.landing": "Start",
   "route.about": "About",
   "route.skills": "Skills",
   "route.education": "Education",
   "route.experience": "Experience",
   "route.projects": "Projects",
-  "route.contact": "Contact"
+  "route.contact": "Contact",
+  "command.file.empty": "Filename is required",
+  "command.file.notfound": "System cannot find the file specified: {{filename}}",
+  "command.msg": "MSG",
+  "modal.ok": "I understand!",
+  "modal.message": "Portfolio is currently in the development stage. Some of the functionalities are not working/implemented so please be understanding :)",
+  "modal.info": "Information",
+  "message.notsent": "The message has not been sent",
+  "message.sent": "Message sent",
+  "message.run": "Message wizard in progress. Enter 'Ctrl+C or type 'q' to quit.",
+  "message.label.send": "Send? (y/n)",
+  "message.label.name": "Name:",
+  "message.label.message": "Message:",
+  "message.label.email": "Email:",
+  "menu.header": "Menu",
+  "download.started": "Download started",
+  "display.header": "Display",
+  "contact.social": "Social media:",
+  "contact.help.wget": "Type 'wget cv' to download my CV",
+  "contact.help.msg": "Type 'msg' to contact me",
+  "contact.data": "My data:",
+  "command.wget.usage": "wget [filename]",
+  "command.wget.description": "Downloads given file",
+  "command.wget": "WGET",
+  "command.msg.usage": "msg",
+  "command.msg.description": "Runs the message wizard"
 }

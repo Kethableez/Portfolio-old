@@ -23,7 +23,7 @@ export const displayReducer = createReducer(
     objectType: objectType,
     object: object
   })),
-  on(closeDisplay, (state) => ({
+  on(closeDisplay, () => ({
     ...initialState
   }))
 )

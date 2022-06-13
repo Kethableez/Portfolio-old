@@ -4,13 +4,11 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { concatMap, map, switchMap, tap, withLatestFrom } from 'rxjs';
+import { concatMap, map, switchMap, tap } from 'rxjs';
 import { Language } from '../../models/language.model';
-import { PageType } from '../../models/page-type.model';
 import { Theme } from '../../models/theme.model';
 import { RootState } from '../root.state';
 import { initApp, setLanguage, setTheme, setTitle } from './app.actions';
-import { getTitle } from './app.selectors';
 
 @Injectable()
 export class AppEffects {

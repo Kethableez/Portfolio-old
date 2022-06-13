@@ -3,12 +3,12 @@
     <div *ngSwitchCase="'message'">
       <form [formGroup]="contactForm" class="input flex-row gap-1" (keyup.enter)="nextStep(currentStep.name)">
         <span class="bold primary">></span>
-        <span class="bold white"> {{ currentStep.label }}:</span>
+        <span class="bold white"> {{ currentStep.label | translate }} </span>
         <input class="bold white" type="text" formControlName="input">
       </form>
     </div>
     <div *ngSwitchDefault>
-      <form [formGroup]="inputForm" class="input flex-row gap-1" (keyup.enter)="runCommand($event)">
+      <form [formGroup]="inputForm" class="input flex-row gap-1" (keyup.enter)="runCommand()">
         <span class="bold primary">></span>
         <input class="bold white" type="text" formControlName="input">
       </form>

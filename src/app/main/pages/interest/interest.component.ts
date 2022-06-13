@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ktbz-interest',
   templateUrl: './interest.component.html',
   styleUrls: ['./interest.component.scss']
 })
-export class InterestComponent implements OnInit {
+export class InterestComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
